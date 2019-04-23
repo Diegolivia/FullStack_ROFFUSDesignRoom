@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+   <h:head>
+	<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+
+</h:head>
+
+<body>
+	<ui:insert name="header">
+		<h:form>
+			<p:menubar autoDisplay="false">
+
+				<p:submenu label="Mantenedores" icon="ui-icon-pencil">
+					<p:menuitem icon="ui-icon-document" value="Distribuidores"
+						url="/protected/EditDistribuidor.xhtml" />
+                                        <p:menuitem icon="ui-icon-document" value="Categorias"
+						url="/protected/categorias.xhtml" />
+                                        <p:menuitem icon="ui-icon-document" value="Muebles"
+						url="/protected/muebles.xhtml" />
+                                        <p:menuitem icon="ui-icon-document" value="Usuarios"
+						url="/protected/usuarios.xhtml" />
+                                        <p:menuitem icon="ui-icon-document" value="ListaFavoritos"
+						url="/protected/listaFavoritos.xhtml" />
+				</p:submenu>
+
+			</p:menubar>
+		</h:form>
+	</ui:insert>
+
+	<ui:insert name="content">
+
+	</ui:insert>
+
+
+	<ui:insert name="footer">
+		<div>Copyright Â© HAMP, 2019. Todos los derechos reservados</div>
+	</ui:insert>
+</body>
+
+</html>
