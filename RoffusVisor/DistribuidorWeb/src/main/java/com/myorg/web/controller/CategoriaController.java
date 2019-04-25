@@ -77,12 +77,13 @@ public class CategoriaController implements Serializable {
 	public void deleteCategoria() {
 		try {
 			if (this.categoriaSelec != null) {
+                                Message.messageInfo("Registro fue eliminado exitosamente");
 				categoriaBusiness.delete(categoriaSelec);
 				loadCategorias();
 				clearForm();
 
 			} else {
-
+                            Message.messageInfo("Debe seleccionar una Categoria");
 			}
 		} catch (Exception e) {
 

@@ -79,12 +79,13 @@ public class DistribuidorController implements Serializable {
 	public void deleteDistribuidor() {
 		try {
 			if (this.distribuidorSelec != null) {
+                                Message.messageInfo("Registro fue eliminado exitosamente");
 				distribuidorBusiness.delete(distribuidorSelec);
 				loadDistribuidores();
 				clearForm();
 
 			} else {
-
+                            Message.messageInfo("Debe seleccionar un registro");
 			}
 		} catch (Exception e) {
 

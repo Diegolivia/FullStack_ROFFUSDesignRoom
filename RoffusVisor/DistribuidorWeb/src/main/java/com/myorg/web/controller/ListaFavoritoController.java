@@ -112,18 +112,19 @@ public class ListaFavoritoController implements Serializable{
     }
 
     public void deleteListaFavoritos() {
-        try {
-            if (this.listaFavoritoSelec != null) {
-                listaFavoritoBusiness.delete(listaFavoritoSelec);
-                loadListaFavoritos();
-                clearForm();
+		try {
+			if (this.listaFavoritoSelec != null) {
+                                Message.messageInfo("Registro fue eliminado exitosamente");
+				listaFavoritoBusiness.delete(listaFavoritoSelec);
+				loadListaFavoritos();
+				clearForm();
 
-            } else {
+			} else {
+                            Message.messageInfo("Debe seleccionar un registro");
+			}
+		} catch (Exception e) {
 
-            }
-        } catch (Exception e) {
-
-        }
+		}
     }
 
     public void selectListaFavorito(SelectEvent e) {

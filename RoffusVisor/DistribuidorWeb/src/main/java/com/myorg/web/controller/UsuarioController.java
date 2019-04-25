@@ -77,12 +77,13 @@ public class UsuarioController implements Serializable{
 	public void deleteUsuario() {
 		try {
 			if (this.usuarioSelec != null) {
+                                Message.messageInfo("Registro fue eliminado exitosamente");
 				usuarioBusiness.delete(usuarioSelec);
 				loadUsuarios();
 				clearForm();
 
 			} else {
-
+                            Message.messageInfo("Debe seleccionar un registro");
 			}
 		} catch (Exception e) {
 

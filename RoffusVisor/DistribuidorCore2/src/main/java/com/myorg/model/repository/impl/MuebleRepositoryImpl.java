@@ -33,7 +33,11 @@ public class MuebleRepositoryImpl implements MuebleRepository,Serializable {
 
 	@Override
 	public Integer delete(Mueble t) throws Exception {
-		em.remove(t);
+                Mueble tmpMueble=(Mueble)em.find(Mueble.class,t.getCodMueble());
+                if(tmpMueble!=null){
+                    em.remove(tmpMueble);    
+                }
+
 		return 1;
 	}
 

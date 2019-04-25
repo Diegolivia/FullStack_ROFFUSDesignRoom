@@ -33,8 +33,12 @@ public class CategoriaRepositoryImpl implements CategoriaRepository,Serializable
 
 	@Override
 	public Integer delete(Categoria t) throws Exception {
-		em.remove(t);
-		return 1;
+                Categoria tmpCategoria=(Categoria)em.find(Categoria.class,t.getCodCategoria());
+                if(tmpCategoria!=null){
+                    em.remove(tmpCategoria);    
+                }
+
+                return 1;
 	}
 
 	@Override

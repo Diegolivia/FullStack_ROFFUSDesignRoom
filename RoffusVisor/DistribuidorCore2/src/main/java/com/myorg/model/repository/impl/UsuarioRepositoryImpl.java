@@ -33,7 +33,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository,Serializable{
 
 	@Override
 	public Integer delete(Usuario t) throws Exception {
-		em.remove(t);
+                Usuario tmpUsuario=(Usuario)em.find(Usuario.class,t.getCodUsuario());
+                if(tmpUsuario!=null){
+                    em.remove(tmpUsuario);    
+                }
 		return 1;
 	}
 

@@ -27,6 +27,10 @@
 							process="@this"
 							actionListener="#{categoriaController.editCategoria()}"
 							update=":frm:men :frm:panGriCategoria" />
+                                                <p:commandButton value="Eliminar" icon="ui-icon-pencil"
+							process="@this"
+							actionListener="#{categoriaController.deleteCategoria()}"
+							update=":frm:men :frm:datTabCategoria :frm:panGriCategoria" />
 					</f:facet>
 				</p:toolbar>
 				<p:panelGrid id="panGriCategoria" columns="2" style="width:100%">

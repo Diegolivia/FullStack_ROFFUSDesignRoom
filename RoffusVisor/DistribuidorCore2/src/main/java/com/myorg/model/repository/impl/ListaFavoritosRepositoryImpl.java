@@ -33,7 +33,10 @@ public class ListaFavoritosRepositoryImpl implements ListaFavoritosRepository,Se
 
 	@Override
 	public Integer delete(ListaFavoritos t) throws Exception {
-		em.remove(t);
+                ListaFavoritos tmpListaFavoritos=(ListaFavoritos)em.find(ListaFavoritos.class,t.getCodListaFavorito());
+                if(tmpListaFavoritos!=null){
+                    em.remove(tmpListaFavoritos);    
+                }
 		return 1;
 	}
 

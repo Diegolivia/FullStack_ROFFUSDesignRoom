@@ -36,7 +36,11 @@ public class DistribuidorRepositoryImpl implements DistribuidorRepository,Serial
 
 	@Override
 	public Integer delete(Distribuidor t) throws Exception {
-		em.remove(t);
+                Distribuidor tmpDistribuidor=(Distribuidor)em.find(Distribuidor.class,t.getCodDistribuidor());
+                if(tmpDistribuidor!=null){
+                    em.remove(tmpDistribuidor);    
+                }
+
 		return 1;
 	}
 

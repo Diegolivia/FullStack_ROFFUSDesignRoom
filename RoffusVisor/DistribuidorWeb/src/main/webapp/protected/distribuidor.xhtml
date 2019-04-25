@@ -27,6 +27,10 @@
 							process="@this"
 							actionListener="#{distribuidorController.editDistribuidor()}"
 							update=":frm:men :frm:panGriDistribuidor" />
+                                                <p:commandButton value="Eliminar" icon="ui-icon-pencil"
+							process="@this"
+							actionListener="#{distribuidorController.deleteDistribuidor()}"
+							update=":frm:men :frm:datTabDistribuidor :frm:panGriDistribuidor" />
 					</f:facet>
 				</p:toolbar>
 				<p:panelGrid id="panGriDistribuidor" columns="2" style="width:100%">

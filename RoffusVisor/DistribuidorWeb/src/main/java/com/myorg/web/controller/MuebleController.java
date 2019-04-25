@@ -113,18 +113,19 @@ public class MuebleController implements Serializable {
     }
 
     public void deleteMueble() {
-        try {
-            if (this.muebleSelec != null) {
-                muebleBusiness.delete(muebleSelec);
-                loadMuebles();
-                clearForm();
+		try {
+			if (this.muebleSelec != null) {
+                                Message.messageInfo("Registro fue eliminado exitosamente");
+				muebleBusiness.delete(muebleSelec);
+				loadMuebles();
+				clearForm();
 
-            } else {
+			} else {
+                            Message.messageInfo("Debe seleccionar un registro");
+			}
+		} catch (Exception e) {
 
-            }
-        } catch (Exception e) {
-
-        }
+		}
     }
 
     public void selectMueble(SelectEvent e) {

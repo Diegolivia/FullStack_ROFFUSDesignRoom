@@ -27,6 +27,10 @@
                                              process="@this"
                                              actionListener="#{listaFavoritoController.editListaFavoritos()}"
                                              update=":frm:men :frm:panGriListaFavorito" />
+                            <p:commandButton value="Eliminar" icon="ui-icon-pencil"
+							process="@this"
+							actionListener="#{listaFavoritoController.deleteListaFavoritos()}"
+							update=":frm:men :frm:datTabListaFavorito :frm:panGriListaFavorito" />
                         </f:facet>
                     </p:toolbar>
                     <p:panelGrid id="panGriListaFavorito" columns="4" style="width:100%">
