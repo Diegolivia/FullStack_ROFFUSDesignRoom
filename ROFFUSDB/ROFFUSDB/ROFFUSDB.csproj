@@ -315,6 +315,12 @@
     <Content Include="Views\Categoria\Create.cshtml" />
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Editor\Index.cshtml" />
+    <Content Include="Views\ListaMuebles\Index.cshtml" />
+    <Content Include="Views\ListaMuebles\Edit.cshtml" />
+    <Content Include="Views\ListaMuebles\Create.cshtml" />
+    <Content Include="Views\Paquete\Create.cshtml" />
+    <Content Include="Views\Paquete\Edit.cshtml" />
+    <Content Include="Views\Paquete\Index.cshtml" />
     <Content Include="Views\Plantilla\Index.cshtml" />
     <Content Include="Views\Plantilla\Create.cshtml" />
     <Content Include="Views\Plantilla\Edit.cshtml" />
@@ -329,6 +335,9 @@
     <Content Include="Views\TiendaVirtual\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
+  <Folder Include="App_Data\" />
+    <Folder Include="Views\Mueble\" />
+    <Folder Include="Views\Plantilla\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\ListaMuebles\" />
   </ItemGroup>
