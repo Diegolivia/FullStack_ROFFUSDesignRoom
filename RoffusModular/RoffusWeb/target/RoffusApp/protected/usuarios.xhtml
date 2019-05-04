@@ -27,6 +27,10 @@
 							process="@this"
 							actionListener="#{usuarioController.editUsuario()}"
 							update=":frm:men :frm:panGriUsuario" />
+                                                <p:commandButton value="Eliminar" icon="ui-icon-pencil"
+							process="@this"
+							actionListener="#{usuarioController.deleteUsuario()}"
+							update=":frm:men :frm:datTabUsuario :frm:panGriUsuario" />
 					</f:facet>
 				</p:toolbar>
 				<p:panelGrid id="panGriUsuario" columns="2" style="width:100%">

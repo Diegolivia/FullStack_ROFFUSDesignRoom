@@ -27,6 +27,10 @@
                                              process="@this"
                                              actionListener="#{muebleController.editMueble()}"
                                              update=":frm:men :frm:panGriMueble" />
+                            <p:commandButton value="Eliminar" icon="ui-icon-pencil"
+							process="@this"
+							actionListener="#{muebleController.deleteMueble()}"
+							update=":frm:men :frm:datTabMueble :frm:panGriMueble" />
                         </f:facet>
                     </p:toolbar>
                     <p:panelGrid id="panGriMueble" columns="4" style="width:100%">
