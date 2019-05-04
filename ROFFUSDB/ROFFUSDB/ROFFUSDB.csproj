@@ -199,8 +199,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListaMueblesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MuebleController.cs" />
+    <Compile Include="Controllers\PlantillaController.cs" />
     <Compile Include="Controllers\TiendaVirtualController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -276,7 +278,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Categoria\" />
+    <Folder Include="Views\ListaMuebles\" />
     <Folder Include="Views\Mueble\" />
+    <Folder Include="Views\Plantilla\" />
     <Folder Include="Views\TiendaVirtual\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
