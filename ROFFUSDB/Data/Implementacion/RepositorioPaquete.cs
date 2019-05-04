@@ -109,13 +109,12 @@ namespace Data.Implementacion
                         {
                             var Paquete = new Paquete();
                             var Plantilla = new Plantilla();
-                            var Usuario = new Usuario();
-                            var ListaMueble = new ListaMuebles();
+                            
 
                             Paquete.CodPaquete      = Convert.ToInt32(dr["CodPaquete"]);
                             Plantilla.CodPlantilla    = Convert.ToInt32(dr["CodPlantilla"]);
-                            Usuario.CodUsuario      = Convert.ToInt32(dr["CodUsuario"]);
-                            ListaMueble.NombreLista     = dr["NombreLista"].ToString();
+                            Paquete.CodUsuario      = Convert.ToInt32(dr["CodUsuario"]);
+                            Paquete.NombreLista     = dr["NombreLista"].ToString();
 
                             Paquetes.Add(Paquete);
                         }
