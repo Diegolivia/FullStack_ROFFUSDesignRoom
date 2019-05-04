@@ -12,7 +12,7 @@ namespace ROFFUSDB.Controllers
     public class PlantillaController : Controller
     {
         private IServicioPlantilla servicioPlantilla = new ServicioPlantilla();
-        // GET: TiendaVirtual
+        // GET: Plantilla
         public ActionResult Index()
         {
             return View(servicioPlantilla.Listar());

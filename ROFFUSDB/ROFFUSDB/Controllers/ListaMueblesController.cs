@@ -13,7 +13,7 @@ namespace ROFFUSDB.Controllers
     {
         private IServicioListaMuebles servicioListaMuebles = new ServicioListaMuebles();
         private IServicioMueble servicioMueble = new ServicioMueble();
-        // GET: Mueble
+        // GET: ListaMuebles
         public ActionResult Index()
         {
             return View(servicioListaMuebles.Listar());
