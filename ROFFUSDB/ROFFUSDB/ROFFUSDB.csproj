@@ -197,6 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EditorController.cs" />
     <Compile Include="Controllers\PaqueteController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -218,6 +219,41 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\styles.css" />
+    <Content Include="img\floor.jpg" />
+    <Content Include="img\grid.jpg" />
+    <Content Include="img\icons\camera.png" />
+    <Content Include="img\icons\construction.png" />
+    <Content Include="img\icons\controls\acute.svg" />
+    <Content Include="img\icons\controls\diagonal-resize.svg" />
+    <Content Include="img\icons\controls\down.svg" />
+    <Content Include="img\icons\controls\remove.svg" />
+    <Content Include="img\icons\controls\repair-tools-cross.svg" />
+    <Content Include="img\icons\controls\resize.svg" />
+    <Content Include="img\icons\controls\rotate.svg" />
+    <Content Include="img\icons\controls\up.svg" />
+    <Content Include="img\icons\rooms\icon01.png" />
+    <Content Include="img\icons\rooms\icon02.png" />
+    <Content Include="img\icons\rooms\icon03.png" />
+    <Content Include="img\icons\rooms\icon04.png" />
+    <Content Include="img\icons\rooms\icon05.png" />
+    <Content Include="img\icons\rooms\icon06.png" />
+    <Content Include="img\icons\rooms\icon07.png" />
+    <Content Include="img\icons\rooms\icon08.png" />
+    <Content Include="img\icons\rooms\icon09.png" />
+    <Content Include="img\icons\rooms\icon10.png" />
+    <Content Include="img\muebles\alfombra001.png" />
+    <Content Include="img\muebles\cama001.png" />
+    <Content Include="img\muebles\mesa001.png" />
+    <Content Include="img\muebles\silla001.png" />
+    <Content Include="img\muebles\sofa001.png" />
+    <Content Include="js\controls.js" />
+    <Content Include="js\entitys.js" />
+    <Content Include="js\evt.js" />
+    <Content Include="js\fabric.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js\obj.js" />
+    <Content Include="js\ui.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -278,6 +314,7 @@
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\Categoria\Create.cshtml" />
     <Content Include="Views\Categoria\Edit.cshtml" />
+    <Content Include="Views\Editor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
