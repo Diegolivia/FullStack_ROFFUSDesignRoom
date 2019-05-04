@@ -4,16 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Tienda Virtual</h2>
+<h2>Index</h2>
 <p>
-    @Html.ActionLink("Nueva Tienda", "Create")
+    @Html.ActionLink("Nueva Tienda Virtual", "Create")
 </p>
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CodTienda)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.NombreTienda)
         </th>
@@ -26,17 +23,19 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CodTienda)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NombreTienda)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { CodTienda = item.CodTienda }) |
-                @Html.ActionLink("Delete", "Delete", new { CodTienda = item.CodTienda })
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { CTienda = item.CodTienda }) |
+                @Html.ActionLink("Delete", "Delete", new { CTienda = item.CodTienda })
             </td>
         </tr>
     }
 
 </table>
+
+
 

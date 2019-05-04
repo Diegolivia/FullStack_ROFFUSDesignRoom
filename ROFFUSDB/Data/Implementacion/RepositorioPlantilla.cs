@@ -21,7 +21,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("INSERT INTO Plantilla VALUES(@Diseño, @Ancho, @Largo, @Alto)", conexion);
+                    var query = new SqlCommand("INSERT INTO Plantilla VALUES(@Ancho, @Largo, @Alto,@Diseño)", conexion);
                     query.Parameters.AddWithValue("@Diseño", t.Diseño);
                     query.Parameters.AddWithValue("@Ancho", t.Ancho);
                     query.Parameters.AddWithValue("@Largo", t.Largo);
@@ -49,7 +49,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("UPDATE Plantilla SET Diseño=@Diseño, Ancho=@Ancho, Largo=@Largo, Alto=@Alto WHERE CodPlantilla=@CodPlantilla", conexion);
+                    var query = new SqlCommand("UPDATE Plantilla SET  Ancho=@Ancho, Largo=@Largo, Alto=@Alto,Diseño=@Diseño WHERE CodPlantilla=@CodPlantilla", conexion);
                     query.Parameters.AddWithValue("@CodPlantilla", t.CodPlantilla);
                     query.Parameters.AddWithValue("@Diseño", t.Diseño);
                     query.Parameters.AddWithValue("@Ancho", t.Ancho);

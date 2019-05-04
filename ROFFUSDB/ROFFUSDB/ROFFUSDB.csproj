@@ -324,11 +324,13 @@
     <Content Include="Views\Mueble\Index.cshtml" />
     <Content Include="Views\Mueble\Create.cshtml" />
     <Content Include="Views\Mueble\Edit.cshtml" />
+    <Content Include="Views\TiendaVirtual\Index.cshtml" />
+    <Content Include="Views\TiendaVirtual\Create.cshtml" />
+    <Content Include="Views\TiendaVirtual\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ListaMuebles\" />
-    <Folder Include="Views\TiendaVirtual\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
