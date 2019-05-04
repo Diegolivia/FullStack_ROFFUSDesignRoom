@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 
+
 namespace Business
 {
     public interface IServicioPlantilla : IServicioCRUD<Plantilla>
     {
-
+  
     }
 }
