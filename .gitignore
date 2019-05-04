@@ -1,12 +1,16 @@
-/RoffusVisor/DistribuidorCore2/target/
-/RoffusVisor/DistribuidorWeb/target/
-/RoffusVisor/RoffusModular/target/
 
 /RoffusVisor/RoffusCore/target/
 /RoffusVisor/RoffusWeb/target/
 \RoffusModular\RoffusWeb\target
 \RoffusModular\RoffusCore\target
 
+/ROFFUSDB/Business/obj/Debug
+/ROFFUSDB/Data/obj/Debug
+/ROFFUSDB/Entity/obj/Debug
+/ROFFUSDB/Business/bin/Debug
+/ROFFUSDB/Data/bin/Debug
+/ROFFUSDB/Entity/bin/Debug
+/ROFFUSDB/.vs
 
 
 
