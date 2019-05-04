@@ -315,14 +315,20 @@
     <Content Include="Views\Categoria\Create.cshtml" />
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Editor\Index.cshtml" />
+    <Content Include="Views\Plantilla\Index.cshtml" />
+    <Content Include="Views\Plantilla\Create.cshtml" />
+    <Content Include="Views\Plantilla\Edit.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Mueble\Index.cshtml" />
+    <Content Include="Views\Mueble\Create.cshtml" />
+    <Content Include="Views\Mueble\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ListaMuebles\" />
-    <Folder Include="Views\Mueble\" />
-    <Folder Include="Views\Plantilla\" />
     <Folder Include="Views\TiendaVirtual\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
