@@ -1,2 +1,6 @@
-/RoffusVisor/DistribuidorCore2/target/
-/RoffusVisor/DistribuidorWeb/target/
+/RoffusVisor/RoffusCore/target/
+/RoffusVisor/RoffusWeb/target/
+/RoffusModular/RoffusCore/target/
+/RoffusModular/RoffusWeb/target/
+\RoffusModular\RoffusCore\target/
+\RoffusModular\RoffusWeb\target/
