@@ -315,13 +315,15 @@
     <Content Include="Views\Categoria\Create.cshtml" />
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Editor\Index.cshtml" />
+    <Content Include="Views\TiendaVirtual\Index.cshtml" />
+    <Content Include="Views\TiendaVirtual\Create.cshtml" />
+    <Content Include="Views\TiendaVirtual\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ListaMuebles\" />
     <Folder Include="Views\Mueble\" />
     <Folder Include="Views\Plantilla\" />
-    <Folder Include="Views\TiendaVirtual\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
