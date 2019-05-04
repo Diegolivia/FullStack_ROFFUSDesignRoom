@@ -9,7 +9,7 @@ using Data.Implementacion;
 
 namespace Business.Implementacion
 {
-public class ServicioPaquete : IServicioPaquete
+    public class ServicioPaquete : IServicioPaquete
     {
         private IRepositorioPaquete repositorioPaquete = new RepositorioPaquete();
         public bool Insertar(Paquete t)

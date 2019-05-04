@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Data.Implementacion
 {
-   public class RepositorioPaquete : IRepositorioPaquete
+    public class RepositorioPaquete : IRepositorioPaquete
     {
         public bool Insertar(Paquete t)
         {
@@ -112,10 +112,10 @@ namespace Data.Implementacion
                             var Usuario = new Usuario();
                             var ListaMueble = new ListaMuebles();
 
-                            Paquete.CodPaquete      = Convert.ToInt32(dr["CodPaquete"]);
-                            Plantilla.CodPlantilla    = Convert.ToInt32(dr["CodPlantilla"]);
-                            Usuario.CodUsuario      = Convert.ToInt32(dr["CodUsuario"]);
-                            ListaMueble.NombreLista     = dr["NombreLista"].ToString();
+                            Paquete.CodPaquete = Convert.ToInt32(dr["CodPaquete"]);
+                            Plantilla.CodPlantilla = Convert.ToInt32(dr["CodPlantilla"]);
+                            Usuario.CodUsuario = Convert.ToInt32(dr["CodUsuario"]);
+                            ListaMueble.NombreLista = dr["NombreLista"].ToString();
 
                             Paquetes.Add(Paquete);
                         }
