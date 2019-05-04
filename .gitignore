@@ -1,8 +1,6 @@
 
-/RoffusVisor/RoffusCore/target/
-/RoffusVisor/RoffusWeb/target/
-\RoffusModular\RoffusWeb\target
-\RoffusModular\RoffusCore\target
+/RoffusModular/RoffusCore/target/
+/RoffusModular/RoffusWeb/target/
 
 /ROFFUSDB/Business/obj/Debug
 /ROFFUSDB/Data/obj/Debug
