@@ -43,7 +43,7 @@ public class ListaMuebleController implements Serializable{
         listaMuebleSelec = new ListaMuebles();
         listaMuebleName = new ListaMuebles();
         
-        listaMuebleName.setNombreLista("L2");
+        
         
         loadListaMuebles();
         loadListByName();
