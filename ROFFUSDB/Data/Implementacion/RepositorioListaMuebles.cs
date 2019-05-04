@@ -9,9 +9,9 @@ using System.Data.SqlClient;
 
 namespace Data.Implementacion
 {
-    public class RepositorioListaMueble : IRepositorioListaMueble
+    public class RepositorioListaMuebles : IRepositorioListaMuebles
     {
-        public bool Insertar(ListaMueble t)
+        public bool Insertar(ListaMuebles t)
         {
             bool rpta = false;
 
@@ -21,8 +21,12 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("INSERT INTO ListaMueble VALUES(@NombreListaMueble)", conexion);
-                    query.Parameters.AddWithValue("@NombreListaMueble", t.NombreListaMueble);
+                    var query = new SqlCommand("INSERT INTO ListaMuebles VALUES(@NombreLista,@CodMueble,@CoordX,@CoordY,@Rotacion)", conexion);
+                    query.Parameters.AddWithValue("@NombreLista", t.NombreLista);
+                    query.Parameters.AddWithValue("@CodMueble", t.CodMueble.CodMueble);
+                    query.Parameters.AddWithValue("@CoordX", t.CoordX);
+                    query.Parameters.AddWithValue("@CoordY", t.CoordY);
+                    query.Parameters.AddWithValue("@Rotacion", t.Rotacion);
 
                     query.ExecuteNonQuery();
 
@@ -36,7 +40,7 @@ namespace Data.Implementacion
             return rpta;
         }
 
-        public bool Actualizar(ListaMueble t)
+        public bool Actualizar(ListaMuebles t)
         {
             bool rpta = false;
 
@@ -46,9 +50,13 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("UPDATE ListaMueble SET NombreListaMueble=@NombreListaMueble WHERE CodListaMueble=@CodListaMueble", conexion);
-                    query.Parameters.AddWithValue("@CodListaMueble", t.CodListaMueble);
-                    query.Parameters.AddWithValue("@NombreListaMueble", t.NombreListaMueble);
+                    var query = new SqlCommand("UPDATE ListaMuebles SET NombreLista=@NombreLista,CodMueble=@CodMueble,CoordX=@CoordX,CoordY=@CoordY,Rotacion=@Rotacion WHERE CodLista=@CodLista", conexion);
+                    query.Parameters.AddWithValue("@CodLista", t.CodLista);
+                    query.Parameters.AddWithValue("@NombreLista", t.NombreLista);
+                    query.Parameters.AddWithValue("@CodMueble", t.CodMueble);
+                    query.Parameters.AddWithValue("@CoordX", t.CoordX);
+                    query.Parameters.AddWithValue("@CoordY", t.CoordY);
+                    query.Parameters.AddWithValue("@Rotacion", t.Rotacion);
 
                     query.ExecuteNonQuery();
 
@@ -61,7 +69,7 @@ namespace Data.Implementacion
             }
             return rpta;
         }
-        public bool Eliminar(ListaMueble t)
+        public bool Eliminar(ListaMuebles t)
         {
             bool rpta = false;
 
@@ -71,8 +79,8 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("DELETE ListaMueble WHERE CodListaMueble=@CodListaMueble", conexion);
-                    query.Parameters.AddWithValue("@CodListaMueble", t.CodListaMueble);
+                    var query = new SqlCommand("DELETE ListaMuebles WHERE CodLista=@CodLista", conexion);
+                    query.Parameters.AddWithValue("@CodLista", t.CodLista);
 
                     query.ExecuteNonQuery();
 
@@ -86,9 +94,9 @@ namespace Data.Implementacion
             return rpta;
         }
 
-        public List<ListaMueble> Listar()
+        public List<ListaMuebles> Listar()
         {
-            var ListaMuebles = new List<ListaMueble>();
+            var ListaMuebles = new List<ListaMuebles>();
 
             try
             {
@@ -96,16 +104,23 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("SELECT t.CodListaMueble,t.NombreListaMueble FROM ListaMueble t", conexion);
+                    var query = new SqlCommand("SELECT t.CodLista,t.NombreLista,t.CodMueble,t.CoordX,t.CoordY,t.Rotacion FROM ListaMuebles t", conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            var ListaMueble = new ListaMueble();
+                            var ListaMueble = new ListaMuebles();
+                            var Mueble = new Mueble();
 
-                            ListaMueble.CodListaMueble = Convert.ToInt32(dr["CodListaMueble"]);
-                            ListaMueble.NombreListaMueble = dr["NombreListaMueble"].ToString();
+                            ListaMueble.CodLista = Convert.ToInt32(dr["CodLista"]);
+                            ListaMueble.NombreLista = dr["NombreLista"].ToString();
+                            ListaMueble.CoordX= Convert.ToInt32(dr["CoordX"]);
+                            ListaMueble.CoordY = Convert.ToInt32(dr["CoordY"]);
+                            ListaMueble.Rotacion= Convert.ToInt32(dr["Rotacion"]);
+
+                            Mueble.CodMueble = Convert.ToInt32(dr["CodMueble"]);
+
 
                             ListaMuebles.Add(ListaMueble);
                         }
@@ -120,7 +135,7 @@ namespace Data.Implementacion
             return ListaMuebles;
         }
 
-        public ListaMueble ListarPorId(int? Id)
+        public ListaMuebles ListarPorId(int? Id)
         {
             throw new NotImplementedException();
         }

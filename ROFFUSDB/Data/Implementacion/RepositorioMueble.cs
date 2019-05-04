@@ -21,8 +21,16 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("INSERT INTO Mueble VALUES(@NombreMueble)", conexion);
+                    var query = new SqlCommand("INSERT INTO Mueble VALUES(@NombreMueble,@Alto,@Ancho,@Largo,@CodCategoria,@CodTienda,@Descripcion,@Imagen,@Icono)", conexion);
                     query.Parameters.AddWithValue("@NombreMueble", t.NombreMueble);
+                    query.Parameters.AddWithValue("@Alto", t.Alto);
+                    query.Parameters.AddWithValue("@Ancho", t.Ancho);
+                    query.Parameters.AddWithValue("@Largo", t.Largo);
+                    query.Parameters.AddWithValue("@CodCategoria", t.CodCategoria);
+                    query.Parameters.AddWithValue("@CodTienda", t.CodTienda);
+                    query.Parameters.AddWithValue("@Descripcion", t.Descripcion);
+                    query.Parameters.AddWithValue("@Imagen", t.Imagen);
+                    query.Parameters.AddWithValue("@Icono", t.Icono);
 
                     query.ExecuteNonQuery();
 
@@ -46,9 +54,17 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("UPDATE Mueble SET NombreMueble=@NombreMueble WHERE CodMueble=@CodMueble", conexion);
+                    var query = new SqlCommand("UPDATE Mueble SET NombreMueble=@NombreMueble,Alto=@Alto,Ancho=@Ancho,Largo=@Largo,CodCategoria=@CodCategoria,CodTienda=@CodTienda,Descripcion=@Descripcion,Imagen=@Imagen,Icono=@Icono WHERE CodMueble=@CodMueble", conexion);
                     query.Parameters.AddWithValue("@CodMueble", t.CodMueble);
                     query.Parameters.AddWithValue("@NombreMueble", t.NombreMueble);
+                    query.Parameters.AddWithValue("@Alto", t.Alto);
+                    query.Parameters.AddWithValue("@Ancho", t.Ancho);
+                    query.Parameters.AddWithValue("@Largo", t.Largo);
+                    query.Parameters.AddWithValue("@CodCategoria", t.CodCategoria);
+                    query.Parameters.AddWithValue("@CodTienda", t.CodTienda);
+                    query.Parameters.AddWithValue("@Descripcion", t.Descripcion);
+                    query.Parameters.AddWithValue("@Imagen", t.Imagen);
+                    query.Parameters.AddWithValue("@Icono", t.Icono);
 
                     query.ExecuteNonQuery();
 
@@ -96,16 +112,27 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("SELECT t.CodMueble,t.NombreMueble FROM Mueble t", conexion);
+                    var query = new SqlCommand("SELECT t.CodMueble,t.NombreMueble,t.Alto,t.Ancho,t.Largo,t.CodCategoria,t.CodTienda,t.Descripcion,t.Imagen,t.Icono FROM Mueble t", conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
                         {
                             var Mueble = new Mueble();
+                            var Categoria = new Categoria();
+                            var TiendaVirtual = new TiendaVirtual();
 
                             Mueble.CodMueble = Convert.ToInt32(dr["CodMueble"]);
                             Mueble.NombreMueble = dr["NombreMueble"].ToString();
+                            Mueble.Alto = Convert.ToInt32(dr["Alto"]);
+                            Mueble.Ancho = Convert.ToInt32(dr["Ancho"]);
+                            Mueble.Largo = Convert.ToInt32(dr["Largo"]);
+                            Mueble.Descripcion = dr["Descripcion"].ToString();
+                            Mueble.Imagen = dr["Imagen"].ToString();
+                            Mueble.Icono = dr["Icono"].ToString();
+
+                            Categoria.CodCategoria = Convert.ToInt32(dr["CodCategoria"]);
+                            TiendaVirtual.CodTienda = Convert.ToInt32(dr["CodTienda"]);
 
                             Muebles.Add(Mueble);
                         }

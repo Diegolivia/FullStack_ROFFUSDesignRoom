@@ -14,7 +14,7 @@ namespace Entity
         public String NombreLista { get; set; }
         public double CoordX { get; set; }
         public double CoordY { get; set; }
-        public double Largo { get; set; }
+        public double Rotacion{ get; set; }
         public Mueble CodMueble { get; set; }
 
 

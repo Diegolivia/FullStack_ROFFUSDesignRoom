@@ -11,7 +11,7 @@ namespace Business.Implementacion
 {
     class ServicioListaMuebles : IServicioListaMuebles
     {
-        private IRepositoriolistaMuebles repositoriolistaMuebles = new RepositorioListaMuebles();
+        private IRepositorioListaMuebles repositoriolistaMuebles = new RepositorioListaMuebles();
         public bool Insertar(ListaMuebles t)
         {
             return repositoriolistaMuebles.Insertar(t);
@@ -28,9 +28,9 @@ namespace Business.Implementacion
         {
             return repositoriolistaMuebles.Listar();
         }
-        public ListaMuebles ListarporId(int? Id)
+        public ListaMuebles ListarPorId(int? Id)
         {
-            return repositoriolistaMuebles.ListarporId(Id);
+            return repositoriolistaMuebles.ListarPorId(Id);
         }
 
     }
