@@ -18,15 +18,15 @@
 
         @Html.LabelFor(model => model.CodPlantilla, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CodPlantilla.CodPlantilla,
-                                 new SelectList(ViewBag.Plantilla, "CPlantilla"), "---Select---", "")
+            @Html.DropDownListFor(model => model.CodPlantilla,
+                                 new SelectList(ViewBag.Plantilla, "CPlantilla","CPlantilla","Link"), "---Select---", "")
             @Html.ValidationMessageFor(model => model.CodPlantilla, "", new { @class = "text-danger" })
         </div>
 
         @Html.LabelFor(model => model.CodUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CodUsuario.CodUsuario,
-                                 new SelectList(ViewBag.CUsuario, "CUsuario"), "---Select---", "")
+            @Html.DropDownListFor(model => model.CodUsuario,
+                                 new SelectList(ViewBag.CUsuario, "CUsuario", "CUsuario","Link"), "---Select---", "")
             @Html.ValidationMessageFor(model => model.CodUsuario, "", new { @class = "text-danger" })
         </div>
 

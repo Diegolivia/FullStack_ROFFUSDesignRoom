@@ -53,7 +53,7 @@ namespace Data.Implementacion
                     var query = new SqlCommand("UPDATE ListaMuebles SET NombreLista=@NombreLista,CodMueble=@CodMueble,CoordX=@CoordX,CoordY=@CoordY,Rotacion=@Rotacion WHERE CodLista=@CodLista", conexion);
                     query.Parameters.AddWithValue("@CodLista", t.CodLista);
                     query.Parameters.AddWithValue("@NombreLista", t.NombreLista);
-                    query.Parameters.AddWithValue("@CodMueble", t.CodMueble);
+                    query.Parameters.AddWithValue("@CodMueble", t.CodMueble.CodMueble);
                     query.Parameters.AddWithValue("@CoordX", t.CoordX);
                     query.Parameters.AddWithValue("@CoordY", t.CoordY);
                     query.Parameters.AddWithValue("@Rotacion", t.Rotacion);
