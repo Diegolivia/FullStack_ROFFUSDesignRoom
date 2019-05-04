@@ -14,7 +14,7 @@ namespace Entity
         public String NombreUsuario { get; set; }
         public String Correo { get; set; }
         public String Contraseña { get; set; }
-        public DateTime FNacimiento  { get; set; }
+        public DateTime FNacimiento { get; set; }
         public String Foto { get; set; }
 
     }
