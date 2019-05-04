@@ -11,9 +11,8 @@ import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 
 import com.myorg.model.entity.Plantilla;
-import com.myorg.business.PlantillaBusiness;
-
 import com.myorg.util.Message;
+import com.myorg.business.PlantillaBusiness;
 
 @Named
 @ViewScoped
@@ -54,13 +53,13 @@ public class PlantillaController implements Serializable {
                 Message.messageInfo("Registro guardado exitosamente");
 
             }
-            Message.messageError("Error guardaste algo ");
             loadPlantillas();
             clearForm();
         } catch (Exception e) {
             Message.messageError("Error Plantilla :" + e.getStackTrace());
         }
     }
+
 
     public void editPlantilla() {
         try {

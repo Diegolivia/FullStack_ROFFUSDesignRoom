@@ -11,8 +11,8 @@
     
     
     <modules>
-        <module>RoffusCore</module>
         <module>RoffusWeb</module>
+        <module>RoffusCore</module>
     </modules>
     
     
@@ -26,7 +26,7 @@
     </dependencies>
     
     <build>
-        <finalName>RoffusModular</finalName>
+        <finalName>RoffusApp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

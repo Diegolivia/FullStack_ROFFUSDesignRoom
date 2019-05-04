@@ -16,109 +16,108 @@ import com.myorg.util.Message;
 
 @Named
 @ViewScoped
-public class UsuarioController implements Serializable{
-    
-     private static final long serialVersionUID = 1L;
+public class UsuarioController implements Serializable {
 
-	@Inject
-	private UsuarioBusiness usuarioBusiness;
+    private static final long serialVersionUID = 1L;
 
-	private Usuario usuario;
-	private Usuario usuarioSelec;
-	private List<Usuario> usuarios;
+    @Inject
+    private UsuarioBusiness usuarioBusiness;
 
+    private Usuario usuario;
+    private Usuario usuarioSelec;
+    private List<Usuario> usuarios;
 
-	@PostConstruct
-	public void init() {
-		usuario = new Usuario();
-		usuarioSelec = new Usuario();
-		loadUsuarios();
-	}
+    @PostConstruct
+    public void init() {
+        usuario = new Usuario();
+        usuarioSelec = new Usuario();
+        loadUsuarios();
+    }
 
-	public void loadUsuarios() {
-		try {
-			this.usuarios = usuarioBusiness.list();
-		} catch (Exception e) {
-			Message.messageError("Error Usuario 2 :" + e.getMessage());
-		}
-	}
+    public void loadUsuarios() {
+        try {
+            this.usuarios = usuarioBusiness.list();
+        } catch (Exception e) {
+            Message.messageError("Error Usuario 2 :" + e.getMessage());
+        }
+    }
 
-	public void saveUsuario() {
-		try {
-			if (usuario.getCodUsuario()!= null) {
+    public void saveUsuario() {
+        try {
+            if (usuario.getCodUsuario() != null) {
 
-				Message.messageInfo("Registro actualizado exitosamente");
-				usuarioBusiness.update(usuario);
-			} else {
-				usuarioBusiness.insert(usuario);
-				Message.messageInfo("Registro guardado exitosamente");
+                Message.messageInfo("Registro actualizado exitosamente");
+                usuarioBusiness.update(usuario);
+            } else {
+                usuarioBusiness.insert(usuario);
+                Message.messageInfo("Registro guardado exitosamente");
 
-			}
-			loadUsuarios();
-			clearForm();
-		} catch (Exception e) {
-			Message.messageError("Error Usuario :" + e.getStackTrace());
-		}
-	}
+            }
+            loadUsuarios();
+            clearForm();
+        } catch (Exception e) {
+            Message.messageError("Error Usuario :" + e.getStackTrace());
+        }
+    }
 
-	public void editUsuario() {
-		try {
-			if (this.usuarioSelec!=null) {
-				this.usuario = usuarioSelec;
-			} else {
-				Message.messageInfo("Debe seleccionar un Usuario");
-			}
-		} catch (Exception e) {
-			Message.messageError("Error Usuario :" + e.getMessage());
-		}
+    public void editUsuario() {
+        try {
+            if (this.usuarioSelec != null) {
+                this.usuario = usuarioSelec;
+            } else {
+                Message.messageInfo("Debe seleccionar un Usuario");
+            }
+        } catch (Exception e) {
+            Message.messageError("Error Usuario :" + e.getMessage());
+        }
 
-	}
-	
-	public void deleteUsuario() {
-		try {
-			if (this.usuarioSelec != null) {
-				usuarioBusiness.delete(usuarioSelec);
-				loadUsuarios();
-				clearForm();
+    }
 
-			} else {
+    public void deleteUsuario() {
+        try {
+            if (this.usuarioSelec != null) {
+                usuarioBusiness.delete(usuarioSelec);
+                loadUsuarios();
+                clearForm();
 
-			}
-		} catch (Exception e) {
+            } else {
 
-		}
-	}
+            }
+        } catch (Exception e) {
 
-	public void selectUsuario(SelectEvent e) {
-		this.usuarioSelec = (Usuario) e.getObject();
-	}
-	
-	public void clearForm() {
-		this.usuario = new Usuario();
-		this.usuarioSelec=null;
-	}
+        }
+    }
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    public void selectUsuario(SelectEvent e) {
+        this.usuarioSelec = (Usuario) e.getObject();
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public void clearForm() {
+        this.usuario = new Usuario();
+        this.usuarioSelec = null;
+    }
 
-	public Usuario getUsuarioSelec() {
-		return usuarioSelec;
-	}
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-	public void setUsuarioSelec(Usuario usuarioSelec) {
-		this.usuarioSelec = usuarioSelec;
-	}
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
+    public Usuario getUsuarioSelec() {
+        return usuarioSelec;
+    }
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
+    public void setUsuarioSelec(Usuario usuarioSelec) {
+        this.usuarioSelec = usuarioSelec;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 }

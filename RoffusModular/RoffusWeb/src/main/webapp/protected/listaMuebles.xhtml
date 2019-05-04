@@ -34,14 +34,16 @@
                         <p:selectOneMenu id="cmbCate" required="true" effect="drop"
                                          value="#{listaMuebleController.mueble}"
                                          converter="omnifaces.SelectItemsConverter">
-                            <f:selectItem itemLabel="Seleccione una opciÃƒÂ³n"
+                            <f:selectItem itemLabel="Seleccione una opcion"
                                           noSelectionOption="true" itemValue="" />
                             <f:selectItems value="#{listaMuebleController.muebles}"
-                                           var="Cate" itemLabel="#{Cate.nombre}" itemValue="#{Cate}" />
+                                           var="Cate" itemLabel="#{Cate.nombre}" itemValue="#{Cate}" />        
                         </p:selectOneMenu>
-                        <p:outputLabel value="Nombre:" for="txtName" />
-                        <p:inputText id="txtName" required="true" maxlength="45"
+                        
+                        <p:outputLabel value="Nombre:" for="spiName" />
+                        <p:inputText id="spiName" required="true" 
                                      value="#{listaMuebleController.listaMueble.nombreLista}" />
+
                         <p:outputLabel value="CoordX:" for="spiCoordX" />
                         <p:inputText id="spiCoordX" required="true" 
                                      value="#{listaMuebleController.listaMueble.coordX}" />
@@ -59,7 +61,7 @@
                                  emptyMessage="No existen muebles registrados"
                                  value="#{listaMuebleController.listaMuebles}" var="listaMueble"
                                  paginator="true" rows="10" selectionMode="single"
-                                 rowKey="#{listaMueble.codListaMueble}">
+                                 rowKey="#{listaMueble.nombreLista}">
                         <f:facet name="header">
                             <p:outputLabel value="Lista de Muebles" />
                         </f:facet>
@@ -69,13 +71,12 @@
                         <p:column headerText="codListaMuebles">
                             <p:outputLabel value="#{listaMueble.codListaMueble}" />
                         </p:column>
-                        <p:column headerText="NombreLista">
-                            <p:outputLabel value="#{listaMueble.nombreLista}" />
-                        </p:column>
                         <p:column headerText="Mueble">
                             <p:outputLabel value="#{listaMueble.mueble.nombre}" />
                         </p:column>
-                        
+                        <p:column headerText="NombreLista">
+                            <p:outputLabel value="#{listaMueble.nombreLista}" />
+                        </p:column>
                         <p:column headerText="CoordenadaX">
                             <p:outputLabel value="#{listaMueble.coordX}" />
                         </p:column>

@@ -12,18 +12,14 @@ import org.primefaces.event.SelectEvent;
 
 import com.myorg.business.PaqueteBusiness;
 import com.myorg.model.entity.Paquete;
-
 import com.myorg.model.entity.Plantilla;
-import com.myorg.business.PlantillaBusiness;
-
 import com.myorg.business.ListaMueblesBusiness;
 import com.myorg.model.entity.ListaMuebles;
-
 import com.myorg.business.UsuarioBusiness;
 import com.myorg.model.entity.Usuario;
 
 import com.myorg.util.Message;
-
+import com.myorg.business.PlantillaBusiness;
 
 @Named
 @ViewScoped

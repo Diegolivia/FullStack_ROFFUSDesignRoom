@@ -23,17 +23,16 @@ public class ListaMuebleController implements Serializable{
      private static final long serialVersionUID = 1L;
 
     @Inject
-    private UsuarioBusiness usuarioBusiness;
-
-    @Inject
     private MuebleBusiness muebleBusiness;
 
     @Inject
     private ListaMueblesBusiness listaMuebleBusiness;
 
     private ListaMuebles listaMueble;
+    private ListaMuebles listaMuebleName;
     private ListaMuebles listaMuebleSelec;
     private List<ListaMuebles> listaMuebles;
+    private List<ListaMuebles> listaMueblesName;
 
     private Mueble mueble;
     private List<Mueble> muebles;
@@ -42,8 +41,12 @@ public class ListaMuebleController implements Serializable{
     public void init() {
         listaMueble = new ListaMuebles();
         listaMuebleSelec = new ListaMuebles();
-
+        listaMuebleName = new ListaMuebles();
+        
+        listaMuebleName.setNombreLista("L2");
+        
         loadListaMuebles();
+        loadListByName();
         loadMuebles();
     }
 
@@ -55,6 +58,19 @@ public class ListaMuebleController implements Serializable{
         }
     }
 
+    public void LookForName(){
+        loadListByName();
+        clearForm();
+    }
+    
+    public void loadListByName(){
+        try {
+            this.listaMueblesName=listaMuebleBusiness.listbyName(listaMuebleName);
+        } catch (Exception e) {
+            Message.messageError("Error ListaMuebles 2 :" + e.getMessage());
+        }
+    }
+    
     public void loadListaMuebles() {
         try {
             this.listaMuebles = listaMuebleBusiness.list();
@@ -127,6 +143,14 @@ public class ListaMuebleController implements Serializable{
     public void setListaMueble(ListaMuebles listaMueble) {
         this.listaMueble = listaMueble;
     }
+    
+    public ListaMuebles getListaMuebleName() {
+        return listaMuebleName;
+    }
+
+    public void setListaMuebleName(ListaMuebles listaMuebleName) {
+        this.listaMuebleName = listaMuebleName;
+    }
 
     public ListaMuebles getListaMuebleSelec() {
         return listaMuebleSelec;
@@ -142,6 +166,14 @@ public class ListaMuebleController implements Serializable{
 
     public void setListaMuebles(List<ListaMuebles> listaMuebles) {
         this.listaMuebles = listaMuebles;
+    }
+    
+    public List<ListaMuebles> getListaMueblesName() {
+        return listaMueblesName;
+    }
+
+    public void setListaMueblesName(List<ListaMuebles> listaMueblesName) {
+        this.listaMueblesName = listaMueblesName;
     }
 
     public List<Mueble> getMuebles() {

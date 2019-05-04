@@ -30,26 +30,27 @@
                         </f:facet>
                     </p:toolbar>
                     <p:panelGrid id="panGriPlantilla" columns="2" style="width:100%">
+                        <p:outputLabel value="Diseño:" for="txtTDiseño" />
+                        <p:inputText id="txtTDiseño" required="true" maxlength="255"
+                                     value="#{plantillaController.plantilla.diseño}" />
                         <p:outputLabel value="Alto:" for="spiAlto" />
                         <p:inputText id="spiAlto" required="true" 
                                      value="#{plantillaController.plantilla.alto}" />
                         <p:outputLabel value="Ancho:" for="spiAncho" />
                         <p:inputText id="spiAncho" required="true" 
                                      value="#{plantillaController.plantilla.ancho}" />
-                        <p:outputLabel value="Diseño:" for="txtDiseño" />
-                        <p:inputText id="txtDiseño" required="true" maxlength="255"
-                                     value="#{plantillaController.plantilla.diseño}" />
+
 
                     </p:panelGrid>
                     <br></br>
 
                     <p:dataTable id="datTabPlantilla"
-                                 emptyMessage="No existen planos2d registrados"
+                                 emptyMessage="No existen Plantillas registrados"
                                  value="#{plantillaController.plantillas}" var="plantilla"
                                  paginator="true" rows="10" selectionMode="single"
                                  rowKey="#{plantilla.codPlantilla}">
                         <f:facet name="header">
-                            <p:outputLabel value="Lista de Planos" />
+                            <p:outputLabel value="Lista de Plantillas" />
                         </f:facet>
                         <p:ajax event="rowSelect"
                                 listener="#{plantillaController.selectPlantilla}" />

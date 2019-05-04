@@ -42,10 +42,15 @@ public class ListaMueblesBusinessImpl implements ListaMueblesBusiness,Serializab
     public List<ListaMuebles> list() throws Exception {
         return listaMueblesRepository.list();
     }
+     
+    @Override
+    public List<ListaMuebles> listbyName(ListaMuebles t) throws Exception {
+        return listaMueblesRepository.listbyName(t);
+    }
 
     @Override
     public ListaMuebles findById(ListaMuebles t) throws Exception {
         return listaMueblesRepository.findById(t);
     }
-    
+     
 }

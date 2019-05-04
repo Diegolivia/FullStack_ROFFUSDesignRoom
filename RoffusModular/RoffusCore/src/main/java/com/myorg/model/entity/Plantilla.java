@@ -39,7 +39,7 @@ public class Plantilla implements Serializable {
         return alto;
     }
 
-    public void setAlto(double alto) {
+    public void setAlto(Double alto) {
         this.alto = alto;
     }
 

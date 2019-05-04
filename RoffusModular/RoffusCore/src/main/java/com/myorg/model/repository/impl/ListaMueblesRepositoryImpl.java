@@ -45,6 +45,16 @@ public class ListaMueblesRepositoryImpl implements ListaMueblesRepository,Serial
 		listamuebles = (List<ListaMuebles>) query.getResultList();
 		return listamuebles;
 	}
+        
+        @Override
+	public List<ListaMuebles> listbyName(ListaMuebles t) throws Exception {
+		List<ListaMuebles> listamuebles = new ArrayList<>();
+
+		TypedQuery<ListaMuebles> query = em.createQuery("SELECT p FROM ListaMuebles p where p.nombreLista=?1",ListaMuebles.class);
+                query.setParameter(1, t.getNombreLista());
+		listamuebles = (List<ListaMuebles>) query.getResultList();
+		return listamuebles;
+	}
 
 	
 	@Override
