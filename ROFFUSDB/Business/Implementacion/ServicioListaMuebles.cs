@@ -9,7 +9,7 @@ using Data.Implementacion;
 
 namespace Business.Implementacion
 {
-    class ServicioListaMuebles : IServicioListaMuebles
+    public class ServicioListaMuebles : IServicioListaMuebles
     {
         private IRepositorioListaMuebles repositoriolistaMuebles = new RepositorioListaMuebles();
         public bool Insertar(ListaMuebles t)
