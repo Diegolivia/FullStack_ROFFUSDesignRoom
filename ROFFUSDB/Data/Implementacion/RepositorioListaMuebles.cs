@@ -115,9 +115,9 @@ namespace Data.Implementacion
 
                             ListaMueble.CodLista = Convert.ToInt32(dr["CodLista"]);
                             ListaMueble.NombreLista = dr["NombreLista"].ToString();
-                            ListaMueble.CoordX= Convert.ToInt32(dr["CoordX"]);
+                            ListaMueble.CoordX = Convert.ToInt32(dr["CoordX"]);
                             ListaMueble.CoordY = Convert.ToInt32(dr["CoordY"]);
-                            ListaMueble.Rotacion= Convert.ToInt32(dr["Rotacion"]);
+                            ListaMueble.Rotacion = Convert.ToInt32(dr["Rotacion"]);
 
                             Mueble.CodMueble = Convert.ToInt32(dr["CodMueble"]);
 
