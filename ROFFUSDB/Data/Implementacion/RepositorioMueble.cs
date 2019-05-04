@@ -26,8 +26,8 @@ namespace Data.Implementacion
                     query.Parameters.AddWithValue("@Alto", t.Alto);
                     query.Parameters.AddWithValue("@Ancho", t.Ancho);
                     query.Parameters.AddWithValue("@Largo", t.Largo);
-                    query.Parameters.AddWithValue("@CodCategoria", t.CodCategoria);
-                    query.Parameters.AddWithValue("@CodTienda", t.CodTienda);
+                    query.Parameters.AddWithValue("@CodCategoria", t.CodCategoria.CodCategoria);
+                    query.Parameters.AddWithValue("@CodTienda", t.CodTienda.CodTienda);
                     query.Parameters.AddWithValue("@Descripcion", t.Descripcion);
                     query.Parameters.AddWithValue("@Imagen", t.Imagen);
                     query.Parameters.AddWithValue("@Icono", t.Icono);

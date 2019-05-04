@@ -101,7 +101,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("SELECT t.CodPaquete,t.NombrePaquete FROM Paquete t", conexion);
+                    var query = new SqlCommand("SELECT t.CodPaquete,t.CodPlantilla,t.CodUsuario,t.NombreLista FROM Paquete t", conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
