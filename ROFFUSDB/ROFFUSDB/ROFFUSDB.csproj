@@ -201,6 +201,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MuebleController.cs" />
+    <Compile Include="Controllers\PlantillaController.cs" />
     <Compile Include="Controllers\TiendaVirtualController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -276,6 +277,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Categoria\" />
     <Folder Include="Views\Mueble\" />
+    <Folder Include="Views\Plantilla\" />
     <Folder Include="Views\TiendaVirtual\" />
   </ItemGroup>
   <ItemGroup>
