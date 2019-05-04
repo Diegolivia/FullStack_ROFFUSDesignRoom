@@ -21,11 +21,11 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("INSERT INTO Usuario VALUES(@NombreUsuario,@Correo,@Contraseña,@FNacimineto,@Foto", conexion);
+                    var query = new SqlCommand("INSERT INTO Usuario VALUES(@NombreUsuario,@Correo,@Contraseña,@FNacimiento,@Foto", conexion);
                     query.Parameters.AddWithValue("@NombreUsuario", t.NombreUsuario);
                     query.Parameters.AddWithValue("@Correo", t.Correo);
                     query.Parameters.AddWithValue("@Contraseña", t.Contraseña);
-                    query.Parameters.AddWithValue("@FNacimineto", t.FNacimiento);
+                    query.Parameters.AddWithValue("@FNacimiento", t.FNacimiento);
                     query.Parameters.AddWithValue("@Foto", t.Foto);
 
 
@@ -51,12 +51,12 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("UPDATE Usuario SET NombreUsuario=@NombreUsuario, Correo=@Correo, Contraseña=@Contraseña,FNacimineto=@FNacimineto,Foto=@Foto WHERE CodUsuario=@CodUsuario", conexion);
+                    var query = new SqlCommand("UPDATE Usuario SET NombreUsuario=@NombreUsuario, Correo=@Correo, Contraseña=@Contraseña,FNacimineto=@FNacimiento,Foto=@Foto WHERE CodUsuario=@CodUsuario", conexion);
                     query.Parameters.AddWithValue("@CodUsuario", t.CodUsuario);
                     query.Parameters.AddWithValue("@NombreUsuario", t.NombreUsuario);
                     query.Parameters.AddWithValue("@Correo", t.Correo);
                     query.Parameters.AddWithValue("@Contraseña", t.Contraseña);
-                    query.Parameters.AddWithValue("@FNacimineto", t.FNacimiento);
+                    query.Parameters.AddWithValue("@FNacimiento", t.FNacimiento);
                     query.Parameters.AddWithValue("@Foto", t.Foto);
 
                     query.ExecuteNonQuery();
@@ -105,7 +105,7 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("SELECT t.CodUsuario,t.NombreUsuario,t.Correo,t.Contraseña,t.FNacimineto,t.Foto FROM Usuario t", conexion);
+                    var query = new SqlCommand("SELECT t.CodUsuario,t.NombreUsuario,t.Correo,t.Contraseña,t.FNacimiento,t.Foto FROM Usuario t", conexion);
 
                     using (var dr = query.ExecuteReader())
                     {
