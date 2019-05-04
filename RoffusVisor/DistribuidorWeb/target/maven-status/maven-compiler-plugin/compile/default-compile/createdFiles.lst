@@ -1,0 +1,6 @@
+com\myorg\web\controller\MuebleController.class
+com\myorg\web\controller\ListaFavoritoController.class
+com\myorg\util\Message.class
+com\myorg\web\controller\DistribuidorController.class
+com\myorg\web\controller\UsuarioController.class
+com\myorg\web\controller\CategoriaController.class

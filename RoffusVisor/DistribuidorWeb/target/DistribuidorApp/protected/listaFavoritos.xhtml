@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head></h:head>
+    <body>
+
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+            <ui:define name="content">
+                <h:form id="frm">
+                    <p:growl id="men" />
+                    <p:toolbar>
+                        <f:facet name="right">
+                            <p:commandButton value="Nuevo" icon="ui-icon-document"
+                                             actionListener="#{listaFavoritoController.clearForm()}" update="@form" />
+
+                            <p:commandButton value="Guardar" icon="ui-icon-disk"
+                                             process="@this :frm:panGriListaFavorito"
+                                             actionListener="#{listaFavoritoController.saveListaFavoritos()}"
+                                             update=":frm:men :frm:datTabListaFavorito :frm:panGriListaFavorito" />
+
+
+                            <p:commandButton value="Editar" icon="ui-icon-pencil"
+                                             process="@this"
+                                             actionListener="#{listaFavoritoController.editListaFavoritos()}"
+                                             update=":frm:men :frm:panGriListaFavorito" />
+                            <p:commandButton value="Eliminar" icon="ui-icon-pencil"
+							process="@this"
+							actionListener="#{listaFavoritoController.deleteListaFavoritos()}"
+							update=":frm:men :frm:datTabListaFavorito :frm:panGriListaFavorito" />
+                        </f:facet>
+                    </p:toolbar>
+                    <p:panelGrid id="panGriListaFavorito" columns="4" style="width:100%">
+                        <p:outputLabel value="Usuario:" for="cmbCate" />
+                        <p:selectOneMenu id="cmbCate" required="true" effect="drop"
+                                         value="#{listaFavoritoController.usuario}"
+                                         converter="omnifaces.SelectItemsConverter">
+                            <f:selectItem itemLabel="Seleccione una opciÃ³n"
+                                          noSelectionOption="true" itemValue="" />
+                            <f:selectItems value="#{listaFavoritoController.usuarios}"
+                                           var="Cate" itemLabel="#{Cate.nombre}" itemValue="#{Cate}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Mueble:" for="cmbCate2" />
+                        <p:selectOneMenu id="cmbCate2" required="true" effect="drop"
+                                         value="#{listaFavoritoController.mueble}"
+                                         converter="omnifaces.SelectItemsConverter">
+                            <f:selectItem itemLabel="Seleccione una opciÃ³n"
+                                          noSelectionOption="true" itemValue="" />
+                            <f:selectItems value="#{listaFavoritoController.muebles}"
+                                           var="Cate2" itemLabel="#{Cate2.nombre}" itemValue="#{Cate2}" />
+                        </p:selectOneMenu>
+                       
+                    </p:panelGrid>
+                    <br></br>
+
+                    <p:dataTable id="datTabListaFavorito"
+                                 emptyMessage="No existen muebles registrados"
+                                 value="#{listaFavoritoController.listaFavoritos}" var="listaFavorito"
+                                 paginator="true" rows="10" selectionMode="single"
+                                 rowKey="#{listaFavorito.codListaFavorito}">
+                        <f:facet name="header">
+                            <p:outputLabel value="Lista de Favoritos" />
+                        </f:facet>
+                        <p:ajax event="rowSelect"
+                                listener="#{listaFavoritoController.selectListaFavorito}" />
+
+                        <p:column headerText="codListaFavoritos">
+                            <p:outputLabel value="#{listaFavorito.codListaFavorito}" />
+                        </p:column>
+                        <p:column headerText="Usuario">
+                            <p:outputLabel value="#{listaFavorito.usuario.nombre}" />
+                        </p:column>
+                         <p:column headerText="Mueble">
+                             <p:outputLabel value="#{listaFavorito.mueble.nombre}" />
+                        </p:column>
+                        
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
