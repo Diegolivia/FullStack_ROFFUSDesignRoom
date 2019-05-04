@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entity;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Data.Implementacion
 {
@@ -18,9 +21,11 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("INSERT INTO Paquete VALUES(@NombrePaquete)", conexion);
-                    query.Parameters.AddWithValue("@NombrePaquete", t.NombrePaquete);
-
+                    var query = new SqlCommand("INSERT INTO Paquete VALUES(@CodPaquete,@CodPlantilla,@CodUsuario,@NomLista)", conexion);
+                    query.Parameters.AddWithValue("@CodPaquete", t.CodPaquete);
+                    query.Parameters.AddWithValue("@CodPlantilla", t.CodPlantilla);
+                    query.Parameters.AddWithValue("@CodUsuario", t.CodUsuario);
+                    query.Parameters.AddWithValue("@NomLista", t.NombreLista);
                     query.ExecuteNonQuery();
 
                     rpta = true;
@@ -43,9 +48,12 @@ namespace Data.Implementacion
                 {
                     conexion.Open();
 
-                    var query = new SqlCommand("UPDATE Paquete SET NombrePaquete=@NombrePaquete WHERE CodPaquete=@CodPaquete", conexion);
+                    var query = new SqlCommand("UPDATE Paquete SET CodPlantilla=@CodPlantilla, CodUsuario=@CodUsuario " +
+                        "NomLista=@NombreLista WHERE CodPaquete=@CodPaquete", conexion);
                     query.Parameters.AddWithValue("@CodPaquete", t.CodPaquete);
-                    query.Parameters.AddWithValue("@NombrePaquete", t.NombrePaquete);
+                    query.Parameters.AddWithValue("@codPlantilla", t.CodPlantilla);
+                    query.Parameters.AddWithValue("@codUsuario", t.CodUsuario);
+                    query.Parameters.AddWithValue("@NombreLista", t.NombreLista);
 
                     query.ExecuteNonQuery();
 
@@ -101,8 +109,10 @@ namespace Data.Implementacion
                         {
                             var Paquete = new Paquete();
 
-                            Paquete.CodPaquete = Convert.ToInt32(dr["CodPaquete"]);
-                            Paquete.NombrePaquete = dr["NombrePaquete"].ToString();
+                            Paquete.CodPaquete      = Convert.ToInt32(dr["CodPaquete"]);
+                            Paquete.CodPlantilla    = Convert.ToInt32(dr["CodPlantilla"]);
+                            Paquete.CodUsuario      = Convert.ToInt32(dr["CodUsuario"]);
+                            Paquete.NombreLista     = dr["NombreLista"].ToString();
 
                             Paquetes.Add(Paquete);
                         }
