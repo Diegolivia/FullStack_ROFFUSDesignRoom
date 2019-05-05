@@ -41,13 +41,13 @@
 					<p:inputText id="txtCorreo" required="true" maxlength="45"
                                                      value="#{usuarioController.usuario.correo}" />
                                         <p:outputLabel value="Contrasena:" for="txtContrasena" />
-					<p:inputText id="txtContrasena" required="true" maxlength="45"
-                                                     value="#{usuarioController.usuario.contraseña}" />
+					<p:password id="txtContrasena" required="true" maxlength="45"
+                                                     value="#{usuarioController.usuario.contraseña}" feedback="true" promptLabel="Ingrese una clave" />
                                         <p:outputLabel value="Foto:" for="txtFoto" />
 					<p:inputText id="txtFoto" required="false" maxlength="45"
                                                      value="#{usuarioController.usuario.foto}" />
                                         <p:outputLabel value="Nacimiento:" for="txtNacimiento" />
-					<p:inputText id="txtNacimiento" required="true" maxlength="45"
+					<p:calendar id="txtNacimiento" required="true" maxlength="45"
                                                      value="#{usuarioController.usuario.nacimiento}" />
                                        
 				</p:panelGrid>
