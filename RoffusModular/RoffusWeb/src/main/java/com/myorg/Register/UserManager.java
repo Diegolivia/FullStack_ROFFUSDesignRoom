@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import com.myorg.model.entity.Usuario;
 import com.myorg.business.UsuarioBusiness;
+import com.myorg.business.impl.UsuarioBusinesImpl;
 import com.myorg.util.Message;
 
 /*
@@ -28,7 +29,7 @@ public class UserManager implements Serializable {
     private Usuario currentUser;
     /**/
     @Inject
-    private UsuarioBusiness usuarioBusiness; //
+    private UsuarioBusinesImpl usuarioBusiness; //
 
     /**/
     @PostConstruct
@@ -48,19 +49,19 @@ public class UserManager implements Serializable {
         try {
             Usuario user = usuarioBusiness.findByName(usuario);
             if (user == null || !contraseña.equals(user.getContraseña())) {
-                return "sign-in";
+                return "Registro";
             }
             currentUser = user;
 
         } catch (Exception e) {
             Message.messageError("Error TiendaVirtual 2 :" + e.getMessage());
         }
-        return "index";
+        return "usuarios";
     }
 
     public String signOut() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
-        return "index?faces-redirect=true";
+        return "Registro?faces-redirect=true";
     }
 }

@@ -16,7 +16,7 @@
 
             <ui:fragment rendered="#{userManager.signedIn}">
                 <h:form>
-                    <h1>Welcome, #{userManager.currentUser.firstName}!</h1>
+                    <h1>Welcome, #{userManager.currentUser.nombre}!</h1>
                     <p>Ya esta registrado
                         <h:commandLink action="#{userManager.signOut}">sign out</h:commandLink>?</p>
                 </h:form>
