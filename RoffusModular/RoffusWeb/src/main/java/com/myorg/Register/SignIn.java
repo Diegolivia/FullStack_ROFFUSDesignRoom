@@ -1,3 +1,5 @@
+package com.myorg.Register;
+
 
 
 import javax.enterprise.context.RequestScoped;
@@ -31,6 +33,6 @@ public class SignIn {
     }
 
     public String submit() {
-        return userManager.signIn(username, password);
+        return userManager.signIn(username,password);
     }
 }
