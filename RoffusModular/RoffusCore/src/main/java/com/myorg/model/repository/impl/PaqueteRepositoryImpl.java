@@ -45,7 +45,17 @@ public class PaqueteRepositoryImpl implements PaqueteRepository,Serializable{
 		paquetes = (List<Paquete>) query.getResultList();
 		return paquetes;
 	}
+        
+        
+	public List<Paquete> listbyUser(Paquete t) throws Exception {
+		List<Paquete> paquetes = new ArrayList<>();
 
+		TypedQuery<Paquete> query = em.createQuery("SELECT p FROM Paquete p where p.usuario = ?1",Paquete.class);
+                query.setParameter(1,t.getUsuario().getCodUsuario());
+                
+		paquetes = (List<Paquete>) query.getResultList();
+		return paquetes;
+	}
 	
 	@Override
 	public Paquete findById(Paquete t) throws Exception {

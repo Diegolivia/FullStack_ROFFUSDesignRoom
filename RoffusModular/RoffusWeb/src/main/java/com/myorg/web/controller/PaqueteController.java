@@ -43,6 +43,9 @@ public class PaqueteController implements Serializable{
     private Paquete paqueteSelec;
     private List<Paquete> paquetes;
 
+    private Paquete paqueteBuscador;
+    private List<Paquete> paquetesBuscador;
+    
     private Plantilla plantilla;
     private List<Plantilla> plantillas;
 
@@ -87,6 +90,14 @@ public class PaqueteController implements Serializable{
         }
     }
 
+    public void BuscarPack(){
+        try {
+            this.paquetes = paqueteBusiness.listbyUser(paquete);
+        } catch (Exception e) {
+            Message.messageError("Error Paquete 2 :" + e.getMessage());
+        }
+    }
+    
     public void loadPaquetes() {
         try {
             this.paquetes = paqueteBusiness.list();

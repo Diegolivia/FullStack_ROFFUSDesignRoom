@@ -45,6 +45,11 @@ public class PaqueteBusinessImpl implements PaqueteBusiness, Serializable{
     }
 
     @Override
+    public List<Paquete> listbyUser(Paquete t) throws Exception {
+        return paqueteRepository.listbyUser(t);
+    }
+    
+    @Override
     public Paquete findById(Paquete t) throws Exception {
         return paqueteRepository.findById(t);
     }

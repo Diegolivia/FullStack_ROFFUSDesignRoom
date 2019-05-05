@@ -17,37 +17,14 @@
                             <p:commandButton value="Nuevo" icon="ui-icon-document"
                                              actionListener="#{paqueteController.clearForm()}" update="@form" />
 
-                            <p:commandButton value="Guardar" icon="ui-icon-disk"
+                            <p:commandButton value="Buscar" icon="ui-icon-disk"
                                              process="@this :frm:panGriPaquete"
-                                             actionListener="#{paqueteController.savePaquete()}"
+                                             actionListener="#{paqueteController.BuscarPack()}"
                                              update=":frm:men :frm:datTabPaquete :frm:panGriPaquete" />
 
-
-                            <p:commandButton value="Editar" icon="ui-icon-pencil"
-                                             process="@this"
-                                             actionListener="#{paqueteController.editPaquete()}"
-                                             update=":frm:men :frm:panGriPaquete" />
                         </f:facet>
                     </p:toolbar>
                     <p:panelGrid id="panGriPaquete" columns="4" style="width:100%">
-                        <p:outputLabel value="Plantilla:" for="cmbCate" />
-                        <p:selectOneMenu id="cmbCate" required="true" effect="drop"
-                                         value="#{paqueteController.plantilla}"
-                                         converter="omnifaces.SelectItemsConverter">
-                            <f:selectItem itemLabel="Seleccione una opcion"
-                                          noSelectionOption="true" itemValue="" />
-                            <f:selectItems value="#{paqueteController.plantillas}"
-                                           var="Cate" itemLabel="#{Cate.diseño}" itemValue="#{Cate}" />
-                        </p:selectOneMenu>
-                        <p:outputLabel value="ListaMuebles:" for="cmbCate2" />
-                        <p:selectOneMenu id="cmbCate2" required="true" effect="drop"
-                                         value="#{paqueteController.listaMueble}"
-                                         converter="omnifaces.SelectItemsConverter">
-                            <f:selectItem itemLabel="Seleccione una opcion"
-                                          noSelectionOption="true" itemValue="" />
-                            <f:selectItems value="#{paqueteController.listaMuebles}"
-                                           var="Cate2" itemLabel="#{Cate2.nombreLista}" itemValue="#{Cate2}" />
-                        </p:selectOneMenu>
                         <p:outputLabel value="Usuario:" for="cmbCate3" />
                         <p:selectOneMenu id="cmbCate3" required="true" effect="drop"
                                          value="#{paqueteController.usuario}"
