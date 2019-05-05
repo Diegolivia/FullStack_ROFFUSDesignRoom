@@ -19,7 +19,7 @@
                             <p:commandButton value="Buscar" icon="ui-icon-disk"
                                              process="@this :frm:panGriNombre"
                                              actionListener="#{listaMuebleController.lookForName()}"
-                                             update=":frm:men :frm:datTabPaquete :frm:panGriNombre" />
+                                             update=":frm:men :frm:datTabListaMueble :frm:panGriNombre" />
                             
                         </f:facet>
                     </p:toolbar>
@@ -34,7 +34,7 @@
                     
                     <br></br>
 
-                    <p:dataTable id="datTabPaquete"
+                    <p:dataTable id="datTabListaMueble"
                                  emptyMessage="No existen muebles registrados"
                                  value="#{listaMuebleController.listaMueblesName}" var="listaMuebleName"
                                  paginator="true" rows="10" selectionMode="single"
