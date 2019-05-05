@@ -58,7 +58,7 @@ public class ListaMuebleController implements Serializable{
         }
     }
 
-    public void LookForName(){
+    public void lookForName(){
         loadListByName();
         clearForm();
     }
