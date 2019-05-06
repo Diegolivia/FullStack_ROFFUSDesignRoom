@@ -1,4 +1,4 @@
-package com.myorg.Register;
+package com.myorg.web.controller;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -9,19 +9,8 @@ import javax.inject.Named;
 
 import com.myorg.model.entity.Usuario;
 import com.myorg.business.UsuarioBusiness;
-import com.myorg.business.impl.UsuarioBusinesImpl;
 import com.myorg.util.Message;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author PC
- */
 @Named
 @SessionScoped
 public class UserManager implements Serializable {
@@ -29,7 +18,7 @@ public class UserManager implements Serializable {
     private Usuario currentUser;
     /**/
     @Inject
-    private UsuarioBusinesImpl usuarioBusiness; //
+    private UsuarioBusiness usuarioBusiness; //
 
     /**/
     @PostConstruct

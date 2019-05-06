@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import com.myorg.business.PaqueteBusiness;
 
 import com.myorg.model.entity.Paquete;
+import com.myorg.model.entity.Usuario;
 import com.myorg.model.repository.PaqueteRepository;
 
 
@@ -45,7 +46,7 @@ public class PaqueteBusinessImpl implements PaqueteBusiness, Serializable{
     }
 
     @Override
-    public List<Paquete> listbyUser(Paquete t) throws Exception {
+    public List<Paquete> listbyUser(Usuario t) throws Exception {
         return paqueteRepository.listbyUser(t);
     }
     

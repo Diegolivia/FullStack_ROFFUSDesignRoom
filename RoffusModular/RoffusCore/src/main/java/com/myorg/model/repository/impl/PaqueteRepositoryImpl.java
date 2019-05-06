@@ -1,6 +1,7 @@
 package com.myorg.model.repository.impl;
 
 import com.myorg.model.entity.Paquete;
+import com.myorg.model.entity.Usuario;
 import com.myorg.model.repository.PaqueteRepository;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -47,11 +48,11 @@ public class PaqueteRepositoryImpl implements PaqueteRepository,Serializable{
 	}
         
         
-	public List<Paquete> listbyUser(Paquete t) throws Exception {
+	public List<Paquete> listbyUser(Usuario t) throws Exception {
 		List<Paquete> paquetes = new ArrayList<>();
 
-		TypedQuery<Paquete> query = em.createQuery("SELECT p FROM Paquete p where p.usuario = ?1",Paquete.class);
-                query.setParameter(1,t.getUsuario().getCodUsuario());
+		TypedQuery<Paquete> query = em.createQuery("SELECT p FROM Paquete p where p.usuario.codUsuario = ?1",Paquete.class);
+                query.setParameter(1,t.getCodUsuario());
                 
 		paquetes = (List<Paquete>) query.getResultList();
 		return paquetes;

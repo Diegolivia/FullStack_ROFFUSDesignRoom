@@ -1,4 +1,4 @@
-package com.myorg.Register;
+package com.myorg.web.controller;
 
 
 
