@@ -23,7 +23,10 @@ public class Plantilla implements Serializable {
 
     @Column(name = "ancho")
     private double ancho;
-    
+
+    @Column(name = "largo")
+    private double largo;
+
     @Column(name = "diseño", length = 255, nullable = false)
     private String diseño;
 
@@ -50,13 +53,21 @@ public class Plantilla implements Serializable {
     public void setAncho(Double ancho) {
         this.ancho = ancho;
     }
-    
+
     public String getDiseño() {
         return diseño;
     }
 
     public void setDiseño(String diseño) {
         this.diseño = diseño;
+    }
+
+    public double getLargo() {
+        return largo;
+    }
+
+    public void setLargo(double largo) {
+        this.largo = largo;
     }
 
 }

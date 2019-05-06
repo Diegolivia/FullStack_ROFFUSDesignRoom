@@ -37,7 +37,7 @@
                             <f:selectItem itemLabel="Seleccione una opcion"
                                           noSelectionOption="true" itemValue="" />
                             <f:selectItems value="#{paqueteController.plantillas}"
-                                           var="Cate" itemLabel="#{Cate.codPlantilla}" itemValue="#{Cate}" />
+                                           var="Cate" itemLabel="#{Cate.diseño}" itemValue="#{Cate}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="ListaMuebles:" for="cmbCate2" />
                         <p:selectOneMenu id="cmbCate2" required="true" effect="drop"
@@ -55,7 +55,7 @@
                             <f:selectItem itemLabel="Seleccione una opcion"
                                           noSelectionOption="true" itemValue="" />
                             <f:selectItems value="#{paqueteController.usuarios}"
-                                           var="Cate3" itemLabel="#{Cate3.codUsuario}" itemValue="#{Cate3}" />
+                                           var="Cate3" itemLabel="#{Cate3.nombre}" itemValue="#{Cate3}" />
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <br></br>
@@ -74,11 +74,11 @@
                         <p:column headerText="codPaquete">
                             <p:outputLabel value="#{paquete.codPaquete}" />
                         </p:column>
-                        <p:column headerText="codPlantilla">
-                            <p:outputLabel value="#{paquete.plantilla.codPlantilla}" />
+                        <p:column headerText="DiseñoPlantilla">
+                            <p:outputLabel value="#{paquete.plantilla.diseño}" />
                         </p:column>
-                        <p:column headerText="codUsuario">
-                            <p:outputLabel value="#{paquete.usuario.codUsuario}" />
+                        <p:column headerText="NombreUsuario">
+                            <p:outputLabel value="#{paquete.usuario.nombre}" />
                         </p:column>
                         <p:column headerText="nombreLista">
                             <p:outputLabel value="#{paquete.listaMueble.nombreLista}" />

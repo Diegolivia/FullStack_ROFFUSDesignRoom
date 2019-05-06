@@ -47,4 +47,13 @@ public class UsuarioBusinesImpl implements UsuarioBusiness,Serializable {
     public Usuario findById(Usuario t) throws Exception {
         return usuarioRepository.findById(t);
     }
+    
+    @Override
+    public Usuario findByName(String t) throws Exception {
+        return usuarioRepository.findByName(t);
+    }
+    @Override
+    public Usuario findByCorreo(String t) throws Exception{
+        return usuarioRepository.findByCorreo(t);
+    }
 }

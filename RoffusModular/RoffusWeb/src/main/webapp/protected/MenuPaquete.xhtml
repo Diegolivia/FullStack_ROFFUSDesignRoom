@@ -14,12 +14,13 @@
                     <p:toolbar>
                         <f:facet name="right">
                             <p:commandButton value="Nuevo" icon="ui-icon-document"
-                                             actionListener="#{listaMuebleController.clearForm()}" update="@form" />
-
+                                             actionListener="#{paqueteController.clearForm()}" update="@form" />
+                         <!--Por reparar-->
                             <p:commandButton value="Buscar" icon="ui-icon-disk"
                                              process="@this :frm:panGriNombre"
-                                             actionListener="#{listaMuebleController.lookForName()}"
-                                             update=":frm:men :frm:panGriNombre" />
+                                             actionListener="#{paqueteController.lookForName()}"
+                                             update=":frm:men :frm:datTabListaMueble :frm:panGriNombre" />
+                            
                         </f:facet>
                     </p:toolbar>
                     
@@ -27,7 +28,7 @@
                         
                         <p:outputLabel value="Nombre:" for="txtName" />
                         <p:inputText id="txtName" required="true" maxlength="45"
-                                     value="#{listaMuebleController.listaMuebleName.nombreLista}" />
+                                     value="#{paqueteController.paqueteName.nombreLista}" />
                         
                     </p:panelGrid>
                     
@@ -35,29 +36,29 @@
 
                     <p:dataTable id="datTabListaMueble"
                                  emptyMessage="No existen muebles registrados"
-                                 value="#{listaMuebleController.listaMueblesName}" var="listaMuebleName"
+                                 value="#{paqueteController.paquetesName}" var="paqueteName"
                                  paginator="true" rows="10" selectionMode="single"
-                                 rowKey="#{listaMuebleName.nombreLista}">
+                                 rowKey="#{paqueteName.nombreLista}">
                         <f:facet name="header">
                             <p:outputLabel value="Lista de Muebles" />
                         </f:facet>
                         <p:ajax event="rowSelect"
-                                listener="#{listaMuebleController.selectListaMueble}" />
+                                listener="#{paqueteController.selectListaMueble}" />
 
                         <p:column headerText="NombreLista">
-                            <p:outputLabel value="#{listaMuebleName.nombreLista}" />
+                            <p:outputLabel value="#{paqueteName.nombreLista}" />
                         </p:column>
                         <p:column headerText="Mueble">
-                            <p:outputLabel value="#{listaMuebleName.mueble.nombre}" />
+                            <p:outputLabel value="#{paqueteName.mueble.nombre}" />
                         </p:column>
                         <p:column headerText="CoordenadaX">
-                            <p:outputLabel value="#{listaMuebleName.coordX}" />
+                            <p:outputLabel value="#{paqueteName.coordX}" />
                         </p:column>
                         <p:column headerText="CoordenadaY">
-                            <p:outputLabel value="#{listaMuebleName.coordY}" />
+                            <p:outputLabel value="#{paqueteName.coordY}" />
                         </p:column>
                         <p:column headerText="Rotacion">
-                            <p:outputLabel value="#{listaMuebleName.rotacion}" />
+                            <p:outputLabel value="#{paqueteName.rotacion}" />
                         </p:column>
 
                     </p:dataTable>

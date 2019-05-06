@@ -39,6 +39,9 @@
                         <p:outputLabel value="Ancho:" for="spiAncho" />
                         <p:inputText id="spiAncho" required="true" 
                                      value="#{plantillaController.plantilla.ancho}" />
+                        <p:outputLabel value="Largo:" for="spiLargo" />
+                        <p:inputText id="spiLargo" required="true" 
+                                     value="#{plantillaController.plantilla.largo}" />
 
 
                     </p:panelGrid>
@@ -63,6 +66,9 @@
                         </p:column>
                         <p:column headerText="Ancho">
                             <p:outputLabel value="#{plantilla.ancho}" />
+                        </p:column>
+                         <p:column headerText="Largo">
+                             <p:outputLabel value="#{plantilla.largo}" />
                         </p:column>
                         <p:column headerText="Diseño">
                             <p:outputLabel value="#{plantilla.diseño}" />

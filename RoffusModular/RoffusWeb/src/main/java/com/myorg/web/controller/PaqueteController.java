@@ -18,6 +18,8 @@ import com.myorg.model.entity.ListaMuebles;
 import com.myorg.business.UsuarioBusiness;
 import com.myorg.model.entity.Usuario;
 
+import com.myorg.web.controller.UserManager;
+
 import com.myorg.util.Message;
 import com.myorg.business.PlantillaBusiness;
 
@@ -43,6 +45,9 @@ public class PaqueteController implements Serializable{
     private Paquete paqueteSelec;
     private List<Paquete> paquetes;
 
+    private Paquete paqueteBuscador;
+    private List<Paquete> paquetesBuscador;
+    
     private Plantilla plantilla;
     private List<Plantilla> plantillas;
 
@@ -56,7 +61,8 @@ public class PaqueteController implements Serializable{
     public void init() {
         paquete = new Paquete();
         paqueteSelec = new Paquete();
-
+        
+        BuscarPack();
         loadPaquetes();
         loadListaMuebles();
         loadPlantillas();
@@ -87,6 +93,15 @@ public class PaqueteController implements Serializable{
         }
     }
 
+    public void BuscarPack(){
+        try {
+            //No funciona aun. deberia recoger el usuario para buscar los paquetes
+            //this.paquetesBuscador = paqueteBusiness.listbyUser(userManager.getCurrentUser());
+        } catch (Exception e) {
+            Message.messageError("No hay Pack :" + e.getMessage());
+        }
+    }
+    
     public void loadPaquetes() {
         try {
             this.paquetes = paqueteBusiness.list();
@@ -163,6 +178,14 @@ public class PaqueteController implements Serializable{
     public void setPaquete(Paquete paquete) {
         this.paquete = paquete;
     }
+    
+    public Paquete getPaqueteBuscador() {
+        return paqueteBuscador;
+    }
+
+    public void setPaqueteBuscador(Paquete paquete) {
+        this.paqueteBuscador = paquete;
+    }
 
     public Paquete getPaqueteSelec() {
         return paqueteSelec;
@@ -172,6 +195,15 @@ public class PaqueteController implements Serializable{
         this.paqueteSelec = paqueteSelec;
     }
 
+    public List<Paquete> getPaquetesBuscador() {
+        return paquetesBuscador;
+    }
+
+    public void setPaquetesBuscador(List<Paquete> paquetes) {
+        this.paquetesBuscador = paquetes;
+    }   
+    
+    
     public List<Paquete> getPaquetes() {
         return paquetes;
     }

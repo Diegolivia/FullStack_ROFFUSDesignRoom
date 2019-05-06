@@ -15,11 +15,12 @@
                         <f:facet name="right">
                             <p:commandButton value="Nuevo" icon="ui-icon-document"
                                              actionListener="#{listaMuebleController.clearForm()}" update="@form" />
-
+                         <!--Reparado-->
                             <p:commandButton value="Buscar" icon="ui-icon-disk"
                                              process="@this :frm:panGriNombre"
                                              actionListener="#{listaMuebleController.lookForName()}"
-                                             update=":frm:men :frm:panGriNombre" />
+                                             update=":frm:men :frm:datTabListaMueble :frm:panGriNombre" />
+                            
                         </f:facet>
                     </p:toolbar>
                     
@@ -42,7 +43,7 @@
                             <p:outputLabel value="Lista de Muebles" />
                         </f:facet>
                         <p:ajax event="rowSelect"
-                                listener="#{listaMuebleController.selectListaMueble}" />
+                                listener="#{listaMuebleController.selectPaquete}" />
 
                         <p:column headerText="NombreLista">
                             <p:outputLabel value="#{listaMuebleName.nombreLista}" />

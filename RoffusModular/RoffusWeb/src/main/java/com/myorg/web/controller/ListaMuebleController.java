@@ -11,7 +11,7 @@ import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 
 import com.myorg.business.MuebleBusiness;
-import com.myorg.business.UsuarioBusiness;
+
 import com.myorg.model.entity.Mueble;
 import com.myorg.model.entity.ListaMuebles;
 import com.myorg.util.Message;
@@ -43,7 +43,7 @@ public class ListaMuebleController implements Serializable{
         listaMuebleSelec = new ListaMuebles();
         listaMuebleName = new ListaMuebles();
         
-        listaMuebleName.setNombreLista("L2");
+        
         
         loadListaMuebles();
         loadListByName();
