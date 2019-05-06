@@ -25,23 +25,16 @@
                         </f:facet>
                     </p:toolbar>
                     <p:panelGrid id="panGriPaquete" columns="4" style="width:100%">
-                        <p:outputLabel value="Usuario:" for="cmbCate3" />
-                        <p:selectOneMenu id="cmbCate3" required="true" effect="drop"
-                                         value="#{paqueteController.usuario}"
-                                         converter="omnifaces.SelectItemsConverter">
-                            <f:selectItem itemLabel="Seleccione una opcion"
-                                          noSelectionOption="true" itemValue="" />
-                            <f:selectItems value="#{paqueteController.usuarios}"
-                                           var="Cate3" itemLabel="#{Cate3.nombre}" itemValue="#{Cate3}" />
-                        </p:selectOneMenu>
+                        <p:outputLabel value="Usuario:" for="txtUsr"/>
+                        <p:outputLabel id="txtUsr" value="#{userManager.getCurrentUser().getNombre()}" />
                     </p:panelGrid>
                     <br></br>
 
                     <p:dataTable id="datTabPaquete"
                                  emptyMessage="No existen paquetes registrados"
-                                 value="#{paqueteController.paquetes}" var="paquete"
+                                 value="#{paqueteController.paquetesBuscador}" var="paqueteBuscador"
                                  paginator="true" rows="10" selectionMode="single"
-                                 rowKey="#{paquete.codPaquete}">
+                                 rowKey="#{paqueteBuscador.codPaquete}">
                         <f:facet name="header">
                             <p:outputLabel value="Lista de Paquetes" />
                         </f:facet>
@@ -49,16 +42,16 @@
                                 listener="#{paqueteController.selectPaquete}" />
 
                         <p:column headerText="codPaquete">
-                            <p:outputLabel value="#{paquete.codPaquete}" />
+                            <p:outputLabel value="#{paqueteBuscador.codPaquete}" />
                         </p:column>
                         <p:column headerText="codPlantilla">
-                            <p:outputLabel value="#{paquete.plantilla.codPlantilla}" />
+                            <p:outputLabel value="#{paqueteBuscador.plantilla.codPlantilla}" />
                         </p:column>
                         <p:column headerText="codUsuario">
-                            <p:outputLabel value="#{paquete.usuario.codUsuario}" />
+                            <p:outputLabel value="#{paqueteBuscador.usuario.codUsuario}" />
                         </p:column>
                         <p:column headerText="nombreLista">
-                            <p:outputLabel value="#{paquete.listaMueble.nombreLista}" />
+                            <p:outputLabel value="#{paqueteBuscador.listaMueble.nombreLista}" />
                         </p:column>
 
                     </p:dataTable>

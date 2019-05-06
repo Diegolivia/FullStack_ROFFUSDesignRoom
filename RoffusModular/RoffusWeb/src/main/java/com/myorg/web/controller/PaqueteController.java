@@ -25,11 +25,13 @@ import com.myorg.business.PlantillaBusiness;
 @ViewScoped
 public class PaqueteController implements Serializable{
     
+    
      private static final long serialVersionUID = 1L;
 
     @Inject
     private PlantillaBusiness plantillaBusiness;
 
+    private UserManager usrmanager;
     @Inject
     private ListaMueblesBusiness listaMueblesBusiness;
 
@@ -59,7 +61,8 @@ public class PaqueteController implements Serializable{
     public void init() {
         paquete = new Paquete();
         paqueteSelec = new Paquete();
-
+        
+        BuscarPack();
         loadPaquetes();
         loadListaMuebles();
         loadPlantillas();
@@ -92,9 +95,9 @@ public class PaqueteController implements Serializable{
 
     public void BuscarPack(){
         try {
-            this.paquetes = paqueteBusiness.listbyUser(paquete);
+            this.paquetesBuscador = paqueteBusiness.listbyUser(usrmanager.getCurrentUser());
         } catch (Exception e) {
-            Message.messageError("Error Paquete 2 :" + e.getMessage());
+            Message.messageError("No hay Pack :" + e.getMessage());
         }
     }
     
@@ -174,6 +177,14 @@ public class PaqueteController implements Serializable{
     public void setPaquete(Paquete paquete) {
         this.paquete = paquete;
     }
+    
+    public Paquete getPaqueteBuscador() {
+        return paqueteBuscador;
+    }
+
+    public void setPaqueteBuscador(Paquete paquete) {
+        this.paqueteBuscador = paquete;
+    }
 
     public Paquete getPaqueteSelec() {
         return paqueteSelec;
@@ -183,6 +194,15 @@ public class PaqueteController implements Serializable{
         this.paqueteSelec = paqueteSelec;
     }
 
+    public List<Paquete> getPaquetesBuscador() {
+        return paquetesBuscador;
+    }
+
+    public void setPaquetesBuscador(List<Paquete> paquetes) {
+        this.paquetesBuscador = paquetes;
+    }   
+    
+    
     public List<Paquete> getPaquetes() {
         return paquetes;
     }
