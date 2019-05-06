@@ -1,0 +1,10 @@
+com\myorg\web\controller\MuebleController.class
+com\myorg\web\controller\SignIn.class
+com\myorg\util\Message.class
+com\myorg\web\controller\UsuarioController.class
+com\myorg\web\controller\CategoriaController.class
+com\myorg\web\controller\TiendaVirtualController.class
+com\myorg\web\controller\UserManager.class
+com\myorg\web\controller\ListaMuebleController.class
+com\myorg\web\controller\PaqueteController.class
+com\myorg\web\controller\PlantillaController.class
