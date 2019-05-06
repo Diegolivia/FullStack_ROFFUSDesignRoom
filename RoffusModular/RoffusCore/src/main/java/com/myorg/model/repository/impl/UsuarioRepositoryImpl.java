@@ -73,5 +73,15 @@ public class UsuarioRepositoryImpl implements UsuarioRepository,Serializable{
 
 		return usuarios != null && !usuarios.isEmpty() ? usuarios.get(0) : new Usuario();
 	}
-        
+        @Override
+        public Usuario findByCorreo(String t) throws Exception{
+            	List<Usuario> usuarios = new ArrayList<>();
+		TypedQuery<Usuario> query = em.createQuery("SELECT p FROM Usuario p where p.correo = ?1",Usuario.class);
+		query.setParameter(1, t);
+
+		usuarios = query.getResultList();
+
+		return usuarios != null && !usuarios.isEmpty() ? usuarios.get(0) : null;
+
+        }
 }
