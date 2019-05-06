@@ -1,5 +1,7 @@
 
 /RoffusModular/RoffusCore/target/
+/RoffusModular/RoffusCore/.settings/
+/RoffusModular/RoffusWeb/.settings/
 /RoffusModular/RoffusWeb/target/
 
 /ROFFUSDB/Business/obj/Debug
