@@ -45,16 +45,26 @@ public class UsuarioController implements Serializable {
     public void saveUsuario() {
         try {
             if (usuario.getCodUsuario() != null) {
+                if(usuarioBusiness.findByCorreo(usuario.getCorreo())==null){
+                    Message.messageInfo("Registro actualizado exitosamente");
+                    usuarioBusiness.update(usuario);
+                    clearForm();
+                }else{
+                    Message.messageError("El correo ingresado ya existe");
+                }
 
-                Message.messageInfo("Registro actualizado exitosamente");
-                usuarioBusiness.update(usuario);
             } else {
-                usuarioBusiness.insert(usuario);
-                Message.messageInfo("Registro guardado exitosamente");
+                if(usuarioBusiness.findByCorreo(usuario.getCorreo())==null ){
+                    usuarioBusiness.insert(usuario);
+                    Message.messageInfo("Registro guardado exitosamente");
+                    clearForm();
+                }else{
+                    Message.messageError("El correo ingresado ya existe");
+                }
 
             }
             loadUsuarios();
-            clearForm();
+
         } catch (Exception e) {
             Message.messageError("Error Usuario :" + e.getStackTrace());
         }
