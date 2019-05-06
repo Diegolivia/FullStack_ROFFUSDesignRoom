@@ -18,6 +18,8 @@ import com.myorg.model.entity.ListaMuebles;
 import com.myorg.business.UsuarioBusiness;
 import com.myorg.model.entity.Usuario;
 
+import com.myorg.web.controller.UserManager;
+
 import com.myorg.util.Message;
 import com.myorg.business.PlantillaBusiness;
 
@@ -25,13 +27,11 @@ import com.myorg.business.PlantillaBusiness;
 @ViewScoped
 public class PaqueteController implements Serializable{
     
-    
      private static final long serialVersionUID = 1L;
 
     @Inject
     private PlantillaBusiness plantillaBusiness;
 
-    private UserManager usrmanager;
     @Inject
     private ListaMueblesBusiness listaMueblesBusiness;
 
@@ -95,7 +95,8 @@ public class PaqueteController implements Serializable{
 
     public void BuscarPack(){
         try {
-            this.paquetesBuscador = paqueteBusiness.listbyUser(usrmanager.getCurrentUser());
+            //No funciona aun. deberia recoger el usuario para buscar los paquetes
+            //this.paquetesBuscador = paqueteBusiness.listbyUser(userManager.getCurrentUser());
         } catch (Exception e) {
             Message.messageError("No hay Pack :" + e.getMessage());
         }
