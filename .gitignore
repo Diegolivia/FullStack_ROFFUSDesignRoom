@@ -13,3 +13,5 @@
 /ROFFUSDB/.vs/
 
 /ROFFUSDB/packages/
+
+*.idea

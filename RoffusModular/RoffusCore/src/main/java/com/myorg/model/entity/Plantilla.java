@@ -27,8 +27,8 @@ public class Plantilla implements Serializable {
     @Column(name = "largo")
     private double largo;
 
-    @Column(name = "diseño", length = 255, nullable = false)
-    private String diseño;
+    @Column(name = "diseno", length = 255, nullable = false)
+    private String diseno;
 
     public Integer getCodPlantilla() {
         return codPlantilla;
@@ -54,12 +54,12 @@ public class Plantilla implements Serializable {
         this.ancho = ancho;
     }
 
-    public String getDiseño() {
-        return diseño;
+    public String getDiseno() {
+        return diseno;
     }
 
-    public void setDiseño(String diseño) {
-        this.diseño = diseño;
+    public void setDiseno(String diseno) {
+        this.diseno = diseno;
     }
 
     public double getLargo() {

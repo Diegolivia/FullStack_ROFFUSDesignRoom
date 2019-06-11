@@ -13,13 +13,13 @@ import javax.persistence.Table;
 @Table(name = "categoria")
 public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
-        @Id
+
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codCategoria;
         
-        @Column(name = "nombre", length = 80, nullable = false)
+    @Column(name = "nombre", length = 80, nullable = false)
 	private String nombre;
-        
 
 	public Integer getCodCategoria() {
 		return codCategoria;
