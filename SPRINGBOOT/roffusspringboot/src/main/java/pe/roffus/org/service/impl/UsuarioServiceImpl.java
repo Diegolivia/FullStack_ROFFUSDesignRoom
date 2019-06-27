@@ -1,12 +1,13 @@
 package pe.roffus.org.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pe.roffus.org.model.Usuario;
 import pe.roffus.org.repository.UsuarioRepository;
 import pe.roffus.org.service.UsuarioService;
 
 import java.util.List;
-
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 
     UsuarioRepository usuarioRepository;

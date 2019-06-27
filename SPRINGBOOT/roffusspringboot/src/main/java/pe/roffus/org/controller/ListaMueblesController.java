@@ -18,19 +18,19 @@ public class ListaMueblesController {
     @Autowired
 
     public ListaMueblesController(ListaMueblesService listaMueblesService) { this.listaMueblesService=listaMueblesService;    }
-
+    @CrossOrigin
     @RequestMapping
     List<ListaMuebles> listListaMuebless(){       return listaMueblesService.listAll();    }
-
+    @CrossOrigin
     @RequestMapping(path="/{id}",method = RequestMethod.GET)
     ListaMuebles getListaMuebles(@PathVariable int id){        return listaMueblesService.getById(id);    }
-
+    @CrossOrigin
     @PostMapping
     ListaMuebles create(@RequestBody ListaMuebles listaMuebles){ return (listaMueblesService.insert(listaMuebles)); }
-
+    @CrossOrigin
     @PutMapping
     ListaMuebles update(@RequestBody ListaMuebles listaMuebles){ return listaMueblesService.update(listaMuebles); }
-
+    @CrossOrigin
     @RequestMapping(path="/{id}",method = RequestMethod.DELETE)
     Boolean delete(@PathVariable int id){
         return listaMueblesService.delete(id);

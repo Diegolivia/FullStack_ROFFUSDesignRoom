@@ -17,23 +17,23 @@ public class MuebleController {
     public MuebleController(MuebleService muebleService) {
         this.muebleService=muebleService;
     }
-
+    @CrossOrigin
     @RequestMapping
     List<Mueble> listMuebles(){       return muebleService.listAll();    }
-
+    @CrossOrigin
     @RequestMapping(path="/{id}",method = RequestMethod.GET)
     Mueble getMueble(@PathVariable int id){
         return muebleService.getById(id);
     }
-
+    @CrossOrigin
     @PostMapping
     Mueble create(@RequestBody Mueble mueble){
         return (muebleService.insert(mueble));
     }
-
+    @CrossOrigin
     @PutMapping
     Mueble update(@RequestBody Mueble mueble){ return muebleService.update(mueble); }
-
+    @CrossOrigin
     @RequestMapping(path="/{id}",method = RequestMethod.DELETE)
     Boolean delete(@PathVariable int id){
         return muebleService.delete(id);

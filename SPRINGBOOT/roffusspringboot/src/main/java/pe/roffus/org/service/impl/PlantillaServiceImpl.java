@@ -1,12 +1,13 @@
 package pe.roffus.org.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pe.roffus.org.model.Plantilla;
 import pe.roffus.org.repository.PlantillaRepository;
 import pe.roffus.org.service.PlantillaService;
 
 import java.util.List;
-
+@Service
 public class PlantillaServiceImpl implements PlantillaService {
 
     PlantillaRepository plantillaRepository;

@@ -1,12 +1,14 @@
 package pe.roffus.org.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pe.roffus.org.model.ListaMuebles;
 import pe.roffus.org.repository.ListaMueblesRepository;
 import pe.roffus.org.service.ListaMueblesService;
 
 import java.util.List;
 
+@Service
 public class ListaMueblesServiceImpl implements ListaMueblesService {
 
     ListaMueblesRepository listaMueblesRepository;

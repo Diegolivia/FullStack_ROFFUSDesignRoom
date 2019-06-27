@@ -1,12 +1,13 @@
 package pe.roffus.org.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pe.roffus.org.model.Paquete;
 import pe.roffus.org.repository.PaqueteRepository;
 import pe.roffus.org.service.PaqueteService;
 
 import java.util.List;
-
+@Service
 public class PaqueteServiceImpl implements PaqueteService {
 
     PaqueteRepository paqueteRepository;

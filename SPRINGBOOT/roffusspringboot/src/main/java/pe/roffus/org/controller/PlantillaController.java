@@ -20,20 +20,20 @@ public class PlantillaController {
 
     @RequestMapping
     List<Plantilla> listPlantillas(){       return plantillaService.listAll();    }
-
+    @CrossOrigin
     @RequestMapping(path="/{id}",method = RequestMethod.GET)
     Plantilla getPlantilla(@PathVariable int id){
         return plantillaService.getById(id);
     }
-
+    @CrossOrigin
     @PostMapping
     Plantilla create(@RequestBody Plantilla plantilla){
         return (plantillaService.insert(plantilla));
     }
-
+    @CrossOrigin
     @PutMapping
     Plantilla update(@RequestBody Plantilla plantilla){ return plantillaService.update(plantilla); }
-
+    @CrossOrigin
     @RequestMapping(path="/{id}",method = RequestMethod.DELETE)
     Boolean delete(@PathVariable int id){
         return plantillaService.delete(id);

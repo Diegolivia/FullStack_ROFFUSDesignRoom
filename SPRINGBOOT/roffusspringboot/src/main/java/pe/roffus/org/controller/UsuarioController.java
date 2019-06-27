@@ -17,23 +17,23 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService=usuarioService;
     }
-
+    @CrossOrigin
     @RequestMapping
     List<Usuario> listUsuarios(){       return usuarioService.listAll();    }
-
+    @CrossOrigin
     @RequestMapping(path="/{id}",method = RequestMethod.GET)
     Usuario getUsuario(@PathVariable int id){
         return usuarioService.getById(id);
     }
-
+    @CrossOrigin
     @PostMapping
     Usuario create(@RequestBody Usuario usuario){
         return (usuarioService.insert(usuario));
     }
-
+    @CrossOrigin
     @PutMapping
     Usuario update(@RequestBody Usuario usuario){ return usuarioService.update(usuario); }
-
+    @CrossOrigin
     @RequestMapping(path="/{id}",method = RequestMethod.DELETE)
     Boolean delete(@PathVariable int id){
         return usuarioService.delete(id);

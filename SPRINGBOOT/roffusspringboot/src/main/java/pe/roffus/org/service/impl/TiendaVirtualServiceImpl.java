@@ -1,12 +1,13 @@
 package pe.roffus.org.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pe.roffus.org.model.TiendaVirtual;
 import pe.roffus.org.repository.TiendaVirtualRepository;
 import pe.roffus.org.service.TiendaVirtualService;
 
 import java.util.List;
-
+@Service
 public class TiendaVirtualServiceImpl implements TiendaVirtualService {
 
     TiendaVirtualRepository tiendaVirtualRepository;
