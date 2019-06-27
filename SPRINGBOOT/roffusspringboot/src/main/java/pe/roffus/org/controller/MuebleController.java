@@ -39,4 +39,10 @@ public class MuebleController {
         return muebleService.delete(id);
     }
 
+    @CrossOrigin
+    @RequestMapping(path="/subcategoria/{id}",method = RequestMethod.GET)
+    public List<Mueble> findMuebleBySubCategoria(@PathVariable int id){
+        return muebleService.findMuebleBySubCategoria(id);
+    }
+
 }

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import pe.roffus.org.model.SubCategoria;
 import pe.roffus.org.service.SubCategoriaService;
+
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -37,5 +39,10 @@ public class SubCategoriaController {
     @RequestMapping(path="/{id}",method = RequestMethod.DELETE)
     Boolean delete(@PathVariable int id){
         return categoriaService.delete(id);
+    }
+    @CrossOrigin
+    @RequestMapping(path="/categoria/{id}",method = RequestMethod.GET)
+    List<SubCategoria> findSubCategoriaByCategoria(@PathVariable int id){
+        return categoriaService.findSubCategoriaByCategoria(id);
     }
 }

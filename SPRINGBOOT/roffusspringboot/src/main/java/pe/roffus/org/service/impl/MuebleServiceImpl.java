@@ -42,4 +42,9 @@ public class MuebleServiceImpl implements MuebleService {
     public List<Mueble> listAll() {
         return muebleRepository.findAll();
     }
+
+    @Override
+    public List<Mueble> findMuebleBySubCategoria(int id){
+       return muebleRepository.findMuebleBySubCategoria(id);
+    }
 }

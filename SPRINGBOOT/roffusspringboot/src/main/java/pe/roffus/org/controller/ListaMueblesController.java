@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.roffus.org.model.ListaMuebles;
 import pe.roffus.org.service.ListaMueblesService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,13 @@ public class ListaMueblesController {
     ListaMuebles getListaMuebles(@PathVariable int id){        return listaMueblesService.getById(id);    }
     @CrossOrigin
     @PostMapping
-    ListaMuebles create(@RequestBody ListaMuebles listaMuebles){ return (listaMueblesService.insert(listaMuebles)); }
+    List<ListaMuebles> create(@RequestBody List<ListaMuebles> listaMuebles){
+        List<ListaMuebles> tmp=new ArrayList<ListaMuebles>();
+        for(int i=0;i<listaMuebles.size();i++){
+            tmp.add(listaMueblesService.insert(listaMuebles.get(i)));
+        }
+        return tmp;
+    }
     @CrossOrigin
     @PutMapping
     ListaMuebles update(@RequestBody ListaMuebles listaMuebles){ return listaMueblesService.update(listaMuebles); }

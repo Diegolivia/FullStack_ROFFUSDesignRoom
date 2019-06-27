@@ -1,4 +1,5 @@
 package pe.roffus.org.service.impl;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,5 +43,9 @@ public class SubCategoriaServiceImpl implements SubCategoriaService {
     @Override
     public List<SubCategoria> listAll() {
         return categoriaRepository.findAll();
+    }
+    @Override
+    public List<SubCategoria> findSubCategoriaByCategoria(int id){
+        return categoriaRepository.findSubCategoriaByCategoria(id);
     }
 }
