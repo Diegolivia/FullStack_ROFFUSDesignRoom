@@ -14,12 +14,13 @@ import javax.persistence.*;
 public class ListaMuebles {
 
     @Id
-    private Integer codigoListaMuebles;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codLista;
 
     private String nombreLista;
 
     @ManyToOne
-    @JoinColumn(name="codigoMueble")
+    @JoinColumn(name="codMueble")
     private Mueble mueble;
 
     private double coordX;

@@ -1,6 +1,5 @@
 package pe.roffus.org.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,10 +10,15 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Categoria {
+public class SubCategoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codCategoria;
-    private String nombreCategoria;
+    private Integer codSubCategoria;
+
+    @ManyToOne
+    @JoinColumn(name="codCategoria")
+    private Categoria categoria;
+
+    private String nombreSubCategoria;
 }

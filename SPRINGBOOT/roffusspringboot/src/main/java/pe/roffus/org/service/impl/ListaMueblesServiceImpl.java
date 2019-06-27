@@ -12,11 +12,32 @@ public class ListaMueblesServiceImpl implements ListaMueblesService {
     ListaMueblesRepository listaMueblesRepository;
 
     @Autowired
-    public ListaMueblesServiceImpl(ListaMueblesRepository listaMueblesRepository){this.listaMueblesRepository=listaMueblesRepository;}
+    public ListaMueblesServiceImpl(ListaMueblesRepository listaMueblesRepository)
+    {this.listaMueblesRepository=listaMueblesRepository;}
 
     @Override
-    public ListaMuebles getListaMuebles(int id){return null;}
+    public ListaMuebles insert(ListaMuebles listaMuebles){
+        return listaMueblesRepository.save(listaMuebles);
+    }
 
     @Override
-    public List<ListaMuebles> listListaMuebles(){return listaMueblesRepository.findAll();}
+    public ListaMuebles update(ListaMuebles listaMuebles) {
+        return listaMueblesRepository.save(listaMuebles);
+    }
+
+    @Override
+    public Boolean delete(int id) {
+        listaMueblesRepository.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public ListaMuebles getById(int id) {
+        return listaMueblesRepository.findById(id).get();
+    }
+
+    @Override
+    public List<ListaMuebles> listAll() {
+        return listaMueblesRepository.findAll();
+    }
 }

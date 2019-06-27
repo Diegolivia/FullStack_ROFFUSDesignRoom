@@ -4,8 +4,4 @@ import pe.roffus.org.model.Mueble;
 
 import java.util.List;
 
-public interface MuebleService {
-
-    Mueble getMueble(int id);
-    List<Mueble> listMuebles();
-}
+public interface MuebleService extends CRUDService<Mueble> {}

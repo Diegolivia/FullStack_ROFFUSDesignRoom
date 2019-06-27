@@ -1,34 +1,42 @@
 package pe.roffus.org.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import pe.roffus.org.model.Categoria;
 import pe.roffus.org.service.CategoriaService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/categorys")
+@RequestMapping("/categoria")
 public class CategoriaController {
     CategoriaService categoriaService;
 
     @Autowired
-    public CategoriaController(CategoriaService categoriaService){
+    public CategoriaController(CategoriaService categoriaService) {
         this.categoriaService=categoriaService;
     }
 
     @RequestMapping
-    List<Categoria> listCategorias(){
-        return categoriaService.listCategorias();
-    }
+    List<Categoria> listCategorias(){       return categoriaService.listAll();    }
 
     @RequestMapping(path="/{id}",method = RequestMethod.GET)
     Categoria getCategoria(@PathVariable int id){
-        return new Categoria(id,"oficina");
+        return categoriaService.getById(id);
+    }
+
+    @PostMapping
+    Categoria create(@RequestBody Categoria categoria){
+        return (categoriaService.insert(categoria));
+    }
+
+    @PutMapping
+    Categoria update(@RequestBody Categoria categoria){ return categoriaService.update(categoria); }
+
+    @RequestMapping(path="/{id}",method = RequestMethod.DELETE)
+    Boolean delete(@PathVariable int id){
+        return categoriaService.delete(id);
     }
 
 }

@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -16,21 +13,22 @@ import javax.persistence.ManyToOne;
 public class Mueble {
 
     @Id
-    private Integer codigoMueble;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codMueble;
 
-    private String nombre;
+    private String nombreMueble;
     private double alto;
     private double ancho;
     private double largo;
-    private String descripcionMueble;
+    private String descripcion;
     private String imagen;
     private String icono;
 
     @ManyToOne
-    @JoinColumn(name="codigo")
-    private Categoria categoriaMueble;
+    @JoinColumn(name="codSubCategoria")
+    private SubCategoria subcategoria;
 
     @ManyToOne
-    @JoinColumn(name="codigoTiendaVirtuak")
-    private TiendaVirtual tiendaVirtualMueble;
+    @JoinColumn(name="codTienda")
+    private TiendaVirtual tiendaVirtual;
 }

@@ -15,10 +15,30 @@ public class PaqueteServiceImpl implements PaqueteService {
     public PaqueteServiceImpl(PaqueteRepository paqueteRepository){this.paqueteRepository=paqueteRepository;}
 
     @Override
-    public Paquete getPaquete(int id){return null;}
+    public Paquete insert(Paquete paquete){
+        return paqueteRepository.save(paquete);
+    }
 
     @Override
-    public List<Paquete> listPaquetes(){return paqueteRepository.findAll();}
+    public Paquete update(Paquete paquete) {
+        return paqueteRepository.save(paquete);
+    }
+
+    @Override
+    public Boolean delete(int id) {
+        paqueteRepository.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public Paquete getById(int id) {
+        return paqueteRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Paquete> listAll() {
+        return paqueteRepository.findAll();
+    }
 
 }
 
