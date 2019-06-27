@@ -32,7 +32,7 @@ public class TiendaVirtualServiceImpl implements TiendaVirtualService {
 
     @Override
     public TiendaVirtual getById(int id) {
-        return tiendaVirtualRepository.findById(id).get();
+        return tiendaVirtualRepository.findById(id).orElse(null);
     }
 
     @Override

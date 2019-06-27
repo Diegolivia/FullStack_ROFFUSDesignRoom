@@ -32,7 +32,7 @@ public class PaqueteServiceImpl implements PaqueteService {
 
     @Override
     public Paquete getById(int id) {
-        return paqueteRepository.findById(id).get();
+        return paqueteRepository.findById(id).orElse(null);
     }
 
     @Override

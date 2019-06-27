@@ -32,7 +32,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario getById(int id) {
-        return usuarioRepository.findById(id).get();
+        return usuarioRepository.findById(id).orElse(null);
     }
 
     @Override

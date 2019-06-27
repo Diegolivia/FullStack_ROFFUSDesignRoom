@@ -1,6 +1,7 @@
 package pe.roffus.org.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 import pe.roffus.org.model.ListaMuebles;
@@ -10,10 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/listaMuebles")
+@ComponentScan
 public class ListaMueblesController {
     ListaMueblesService listaMueblesService;
 
     @Autowired
+
     public ListaMueblesController(ListaMueblesService listaMueblesService) { this.listaMueblesService=listaMueblesService;    }
 
     @RequestMapping

@@ -39,10 +39,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public Categoria getById(int id) {
         Optional<Categoria> cat = categoriaRepository.findById(id);
-        if(cat.isPresent())
-            return cat.get();
-        else
-            return null;
+        return cat.orElse(null);
     }
 
     @Override

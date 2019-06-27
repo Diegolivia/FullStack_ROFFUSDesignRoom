@@ -32,7 +32,7 @@ public class PlantillaServiceImpl implements PlantillaService {
 
     @Override
     public Plantilla getById(int id) {
-        return plantillaRepository.findById(id).get();
+        return plantillaRepository.findById(id).orElse(null);
     }
 
     @Override

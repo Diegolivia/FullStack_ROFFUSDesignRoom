@@ -33,7 +33,7 @@ public class ListaMueblesServiceImpl implements ListaMueblesService {
 
     @Override
     public ListaMuebles getById(int id) {
-        return listaMueblesRepository.findById(id).get();
+        return listaMueblesRepository.findById(id).orElse(null);
     }
 
     @Override

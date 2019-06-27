@@ -33,7 +33,7 @@ public class MuebleServiceImpl implements MuebleService {
 
     @Override
     public Mueble getById(int id) {
-        return muebleRepository.findById(id).get();
+        return muebleRepository.findById(id).orElse(null);
     }
 
     @Override
