@@ -28,7 +28,7 @@ class Signup extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
-            nombreUsuario: '',
+            nombreUsuario: 'us',
             correo: '',
             contrasena: '',
             foto:'',
