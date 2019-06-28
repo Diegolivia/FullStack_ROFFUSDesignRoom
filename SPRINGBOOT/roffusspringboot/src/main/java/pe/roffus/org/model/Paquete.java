@@ -19,9 +19,9 @@ public class Paquete {
 
     private String nombrePaquete;
 
-    @ManyToOne
-    @JoinColumn(name="codLista")
-    private ListaMuebles listaMuebles;
+    //@ManyToOne
+    //@JoinColumn(name="codLista")
+    private String listaMuebles;
 
     @ManyToOne
     @JoinColumn(name="codPlantilla")

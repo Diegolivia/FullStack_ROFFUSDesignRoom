@@ -16,7 +16,7 @@ class Designer extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            proyectoActual:{nombre:'',codPlantilla:null,codUsuario:null,nombreLista:''},
+            proyectoActual:{nombrePaquete:'',plantilla:null,usuario:null,listaMuebles:''},
             plantillaActual:{diseno:'[{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}]',alto:0,ancho:0,largo:0},
 
             existeProyecto:false,
@@ -54,9 +54,9 @@ class Designer extends React.Component{
         this.setState((prevState)=>({
             proyectoActual:{
                 ...prevState.proyectoActual,
-                nombreLista:this.state.nombreListaMuebles,
-                codUsuario:this.state.codigoUsuario,
-                codPlantilla:codigoPlantilla
+                listaMuebles:this.state.nombreListaMuebles,
+                usuario:this.state.codigoUsuario,
+                plantilla:codigoPlantilla
             }
         }),function(){
             console.log(this.state.proyectoActual);

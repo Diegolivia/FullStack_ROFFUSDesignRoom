@@ -120,6 +120,7 @@ export function postListaMuebles(listamuebles){
     };
 }
 export function postProyecto(proyecto){
+    console.log(proyecto);
     return function (dispatch, getState) {
         fetch("http://localhost:8080/paquete",{
             method: 'POST', // or 'PUT'

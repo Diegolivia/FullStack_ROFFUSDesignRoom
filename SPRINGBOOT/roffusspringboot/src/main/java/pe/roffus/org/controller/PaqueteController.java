@@ -25,6 +25,7 @@ public class PaqueteController {
     Paquete getPaquete(@PathVariable int id){
         return paqueteService.getById(id);
     }
+
     @CrossOrigin
     @PostMapping
     Paquete create(@RequestBody Paquete paquete){

@@ -7,13 +7,13 @@ class DesignerProject extends React.Component{
         super(props);
         this.state={
             proyectos: [
-                {codPaquete:1,nombre:"proyecto 1dfdf",codPlantilla:1,codUsuario:1,nombreLista:"l2"},
-                {codPaquete:2,nombre:"proyecto 2",codPlantilla:1,codUsuario:1,nombreLista:"l2"},
-                {codPaquete:3,nombre:"proyecto fas",codPlantilla:1,codUsuario:1,nombreLista:"l2"},
-                {codPaquete:4,nombre:"proyecto df3r3",codPlantilla:1,codUsuario:1,nombreLista:"l2"}
+                {codPaquete:1,nombrePaquete:"proyecto 1dfdf",plantilla:1,usuario:1,listaMuebles:"l2"},
+                {codPaquete:2,nombrePaquete:"proyecto 2",plantilla:1,usuario:1,listaMuebles:"l2"},
+                {codPaquete:3,nombrePaquete:"proyecto fas",plantilla:1,usuario:1,listaMuebles:"l2"},
+                {codPaquete:4,nombrePaquete:"proyecto df3r3",plantilla:1,usuario:1,listaMuebles:"l2"}
               ],
         
-              proyectoActual:{codPaquete:1,nombre:"proyecto 1dfdf",codPlantilla:1,codUsuario:1,nombreLista:"l2"},
+              proyectoActual:{codPaquete:1,nombrePaquete:"proyecto 1dfdf",plantilla:1,usuario:1,listaMuebles:"l2"},
 
               //===========model
               //proyecto
@@ -61,7 +61,7 @@ class DesignerProject extends React.Component{
 
         //TRIGGER SET GLOBAL DATES
         this.props.setGlobalPlantilla({"ancho":parseInt(this.state.plantillaAncho),"largo":parseInt(this.state.plantillaLargo),"alto":parseInt(this.state.plantillaAlto)});
-        this.props.setGlobalProyecto({"nombre":this.state.proyectoNombre});
+        this.props.setGlobalProyecto({"nombrePaquete":this.state.proyectoNombre});
         window.setCameraToCenter();
         window.cleanListaMuebles();
         window.addRoom([{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}],parseInt(this.state.plantillaAncho),parseInt(this.state.plantillaLargo));
@@ -98,7 +98,7 @@ class DesignerProject extends React.Component{
                             <section className="item" key={index}>
                             <div className="projectItemContainer">
                               <img src="./dist/img/project-icon.png" alt=""></img>
-                              <h4 className="title">{proyecto.nombre}</h4>
+                              <h4 className="title">{proyecto.nombrePaquete}</h4>
                               <div className="buttons">
                                 <p className="btn" onClick={this.btnAbrirProyecto.bind(this,index)}>Abrir</p>
                                 <p className="btn" onClick={this.btnBorrarProyecto.bind(this,index)}>Borrar</p>
