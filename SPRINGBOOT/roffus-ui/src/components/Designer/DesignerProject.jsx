@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {fetchListaProyectos,deleteProyectoXid,fetchPlantillaXid} from '../../actions/designerActions';
-import { LISTAR_PROYECTOS, LISTAR_PLANTILLA_POR_ID } from '../../actions/actionTypes';
+import {fetchListaProyectos,deleteProyectoXid,fetchPlantillaXid,fetchListaMueblesXnombre} from '../../actions/designerActions';
+import { LISTAR_PROYECTOS, LISTAR_PLANTILLA_POR_ID ,BORRAR_PROYECTO_POR_ID,LISTAR_LISTAMUEBLES_POR_NOMBRE} from '../../actions/actionTypes';
 class DesignerProject extends React.Component{
     constructor(props){
         super(props);
@@ -19,7 +19,7 @@ class DesignerProject extends React.Component{
               //proyecto
               proyectoNombre:"",
               //plantilla
-              plantilladiseno:"",
+              plantilladiseno:"[{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}]",
               plantillaAncho:"",
               plantillaLargo:"",
               plantillaAlto:"",
@@ -36,21 +36,35 @@ class DesignerProject extends React.Component{
         if(nextProps.actionType===LISTAR_PROYECTOS){
             console.log(nextProps.respuesta);
             this.setState({proyectos:nextProps.respuesta});
+          }else if(nextProps.actionType==BORRAR_PROYECTO_POR_ID){
+            this.props.fetchListaProyectos();
           }
           else if(nextProps.actionType===LISTAR_PLANTILLA_POR_ID){
+              //proyecto abrierto
+            var newJson = nextProps.respuesta.diseno.replace(/([a-zA-Z0-9]+?):/g, '"$1":');
+            newJson = newJson.replace(/'/g, '"');
+            console.log(JSON.parse(newJson));
+            window.addRoom(JSON.parse(newJson),nextProps.respuesta.ancho,nextProps.respuesta.largo);
+             window.panelProject.closer_fired();
+             console.log((JSON.parse(newJson)+"")[0])
+              this.props.setGlobalPlantilla({diseno:JSON.parse(newJson)+"",ancho:nextProps.respuesta.ancho,largo:nextProps.respuesta.largo,alto:nextProps.respuesta.alto});
+          }else if(nextProps.actionType===LISTAR_LISTAMUEBLES_POR_NOMBRE){
+              alert("adsf");
               console.log(nextProps.respuesta);
-              this.props.setGlobalPlantilla(nextProps.respuesta);
+              window.cleanListaMuebles();
+              window.loadFurnitures(nextProps.respuesta);
           }
     }
     btnAbrirProyecto(index){
-        this.props.fetchPlantillaXid(this.proyectos[index].codPlantilla);
+        this.props.fetchPlantillaXid(this.state.proyectos[index].plantilla.codPlantilla);
+        this.props.fetchListaMueblesXnombre(this.state.proyectos[index].listaMuebles);
         //this.listarPlantillaXProyecto();
         //this.listarListaMueblesXProyecto();
         //this.listarMueblesXlistaMuebles();
     };
     btnBorrarProyecto(index){
       /*DELETE*/ this.props.deleteProyectoXid(this.state.proyectos[index].codPaquete);
-      /*GET*/ this.props.fetchListaProyectos();
+      /*GET*/ 
     };
     btnCancelar(){
         this.limpiarProyectoForm();
@@ -60,7 +74,7 @@ class DesignerProject extends React.Component{
         this.limpiarProyectoForm();
 
         //TRIGGER SET GLOBAL DATES
-        this.props.setGlobalPlantilla({"ancho":parseInt(this.state.plantillaAncho),"largo":parseInt(this.state.plantillaLargo),"alto":parseInt(this.state.plantillaAlto)});
+        this.props.setGlobalPlantilla({"ancho":parseInt(this.state.plantillaAncho),"largo":parseInt(this.state.plantillaLargo),"alto":parseInt(this.state.plantillaAlto),"diseno":null});
         this.props.setGlobalProyecto({"nombrePaquete":this.state.proyectoNombre});
         window.setCameraToCenter();
         window.cleanListaMuebles();
@@ -153,6 +167,7 @@ const mapState = state => {
 const mapDispatch = {
     fetchListaProyectos,
     deleteProyectoXid,
-    fetchPlantillaXid
+    fetchPlantillaXid,
+    fetchListaMueblesXnombre
 };
  export default connect(mapState,mapDispatch)(DesignerProject);

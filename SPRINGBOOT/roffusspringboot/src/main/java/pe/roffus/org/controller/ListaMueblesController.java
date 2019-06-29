@@ -42,5 +42,9 @@ public class ListaMueblesController {
     Boolean delete(@PathVariable int id){
         return listaMueblesService.delete(id);
     }
+    @CrossOrigin
+    @GetMapping("/pornombre")
+    List<ListaMuebles> getListaMueblesXnombre(@RequestParam String nombre){        return listaMueblesService.findListaMueblesByNombre(nombre);  }
+
 
 }

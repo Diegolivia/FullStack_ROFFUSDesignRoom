@@ -23,10 +23,6 @@ class DesignerRoom extends React.Component{
           dummyLargo:0,
           dummyAlto:0,
             //plantilla
-            plantilladiseno:"",
-            plantillaAncho:"",
-            plantillaLargo:"",
-            plantillaAlto:"",
         }
 
     }

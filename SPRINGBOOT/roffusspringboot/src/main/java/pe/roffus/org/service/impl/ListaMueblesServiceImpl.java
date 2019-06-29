@@ -42,4 +42,8 @@ public class ListaMueblesServiceImpl implements ListaMueblesService {
     public List<ListaMuebles> listAll() {
         return listaMueblesRepository.findAll();
     }
+    @Override
+    public List<ListaMuebles> findListaMueblesByNombre(String nombre){
+        return listaMueblesRepository.findListaMueblesByNombre(nombre);
+    }
 }

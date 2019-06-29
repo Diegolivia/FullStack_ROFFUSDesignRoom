@@ -312,7 +312,7 @@
         this.constructor();
     }
 
-    var Furniture=function(obj,seguir,ancho,alto){
+    var Furniture=function(obj,seguir,isloaded,ancho,alto){
         this.fabric;
         //
         this.objDB=obj;
@@ -321,6 +321,9 @@
         this.width=ancho;
         this.height=alto;
         this.seguir=seguir;
+        this.isloaded=isloaded;
+            this.left=0;
+            this.top=0;
         let self=this;
         this.init=function(){
             
@@ -329,13 +332,18 @@
                 img.on("selected",self.isSelected)
                 img.on("deselected",self.isDeselected);
                 img.on("modified",self.isModified);
-                if(self.seguir){
-                    img.set("left",canvas.mousePosX);
-                    img.set("top",canvas.mousePosY);
-                    canvas.fabric.setActiveObject(img);
+                if(!self.isloaded){
+                    if(self.seguir){
+                        img.set("left",canvas.mousePosX);
+                        img.set("top",canvas.mousePosY);
+                        canvas.fabric.setActiveObject(img);
+                    }else{
+                        img.set("left",3000-img.getScaledWidth()/2);
+                        img.set("top",3000-img.getScaledWidth()/2);
+                    }
                 }else{
-                    img.set("left",3000-img.getScaledWidth()/2);
-                    img.set("top",3000-img.getScaledWidth()/2);
+                    img.set("left",self.left);
+                    img.set("top",self.top);
                 }
                 img["transparentCorners"]=false;
                 img["cornerColor"]="rgba(30,30,30)";
@@ -358,6 +366,10 @@
                 canvas.fabric.add(img);
             });
             
+        }
+        this.setPositionManually=function(left,top){
+            this.left=left;
+            this.top=top;
         }
         this.isSelected=function(){
             self.setPanelStateInfo();

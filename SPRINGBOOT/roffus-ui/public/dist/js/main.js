@@ -21,7 +21,7 @@ function subcategoryClicked(event){
 sectionFurnitures.subcategoryItem_fired(event);
 }
 function addFurniture(obj,seguir){
-  arrMuebles.push(new Furniture(obj,seguir));
+  arrMuebles.push(new Furniture(obj,seguir,false));
 }
 function addRoom(pointsArr,ancho,largo){
   if(room!=null){
@@ -32,6 +32,13 @@ function addRoom(pointsArr,ancho,largo){
     room=new Room(pointsArr,ancho,largo);
   }
 }
+function loadFurnitures(listaMuebles){
+    for(var i=0;i<listaMuebles.length;i++){
+      let tmp=new Furniture(listaMuebles[i].mueble,false,true);
+      tmp.setPositionManually(listaMuebles[i].coordX,listaMuebles[i].coordY);
+      arrMuebles.push(tmp);
+    }
+}
 function generateListaMuebles(nombreLista){
     let listaMuebles=[];
     for(var i=0;i<arrMuebles.length;i++){
@@ -41,7 +48,7 @@ function generateListaMuebles(nombreLista){
         coordX:tmp.fabric.get("left"),
         coordY:tmp.fabric.get("top"),
         rootacion:tmp.fabric.get("angle"),
-        codMueble:tmp.fabric.codMueble
+        mueble:tmp.objDB
       });
     }
     return listaMuebles;

@@ -1,7 +1,8 @@
 import {LISTAR_CATEGORIAS,
         LISTAR_SUBCATEGORIAS_POR_CATEGORIA,
         LISTAR_MUEBLES_POR_SUBCATEGORIA,
-        INSERTAR_PROYECTO} from './actionTypes';
+        INSERTAR_PROYECTO,
+        LISTAR_LISTAMUEBLES_POR_NOMBRE} from './actionTypes';
 import {LISTAR_PROYECTOS,
         BORRAR_PROYECTO_POR_ID,
         LISTAR_PLANTILLA_POR_ID} from './actionTypes';
@@ -138,4 +139,16 @@ export function postProyecto(proyecto){
             })
     };
 }
-//
+//abrir
+export function fetchListaMueblesXnombre(nombre){
+    return function (dispatch, getState) {
+        fetch("http://localhost:8080/listaMuebles/pornombre?nombre=" + nombre ,{method: 'GET'})//{method: 'GET',body: JSON.stringify(data),headers:{'Content-Type': 'application/json'}}
+        .then(response => response.json())
+        .then(jsonData => {
+            dispatch({
+                type:LISTAR_LISTAMUEBLES_POR_NOMBRE,
+                respuesta:jsonData
+            })
+        })
+    };
+}
