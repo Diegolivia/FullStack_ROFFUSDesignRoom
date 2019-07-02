@@ -49,7 +49,6 @@ class DesignerProject extends React.Component{
              console.log((JSON.parse(newJson)+"")[0])
               this.props.setGlobalPlantilla({diseno:JSON.parse(newJson)+"",ancho:nextProps.respuesta.ancho,largo:nextProps.respuesta.largo,alto:nextProps.respuesta.alto});
           }else if(nextProps.actionType===LISTAR_LISTAMUEBLES_POR_NOMBRE){
-              alert("adsf");
               console.log(nextProps.respuesta);
               window.cleanListaMuebles();
               window.loadFurnitures(nextProps.respuesta);
