@@ -23,6 +23,8 @@ class DesignerProject extends React.Component{
               plantillaAncho:"",
               plantillaLargo:"",
               plantillaAlto:"",
+
+              flag:false
         }
         this.listarProyectos=this.listarProyectos.bind(this);
     }
@@ -47,7 +49,8 @@ class DesignerProject extends React.Component{
             window.addRoom(JSON.parse(newJson),nextProps.respuesta.ancho,nextProps.respuesta.largo);
              window.panelProject.closer_fired();
               //this.props.setGlobalPlantilla({diseno:JSON.parse(newJson)+"",ancho:nextProps.respuesta.ancho,largo:nextProps.respuesta.largo,alto:nextProps.respuesta.alto});
-          }else if(nextProps.actionType===LISTAR_LISTAMUEBLES_POR_NOMBRE){
+          }else if(nextProps.actionType==LISTAR_LISTAMUEBLES_POR_NOMBRE){
+              console.log(nextProps.respuesta);
               window.cleanListaMuebles();
               window.loadFurnitures(nextProps.respuesta);
               window.showMessage("Proyecto \""+this.state.proyectoActual.nombrePaquete+"\" abierto");
@@ -76,7 +79,7 @@ class DesignerProject extends React.Component{
     }
     btnCrearProyecto(){
         if(!this.validateForm()){return;}
-
+        this.setState({flag:true})
         this.limpiarProyectoForm();
         //TRIGGER SET GLOBAL DATES
         this.props.crearNuevoProyecto(this.state.plantillaAncho,this.state.plantillaLargo,this.state.plantillaAlto,this.state.proyectoNombre);

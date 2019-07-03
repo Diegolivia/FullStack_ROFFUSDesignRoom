@@ -1,4 +1,5 @@
 window.DesignerProjectStates={empty:'empty',created:'created',saved:'saved'};
+var flag=false;
 function initUI(){
   panelProject.init();
   panelRoom.init();
