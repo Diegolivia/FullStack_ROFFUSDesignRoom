@@ -2,8 +2,7 @@ import {LISTAR_CATEGORIAS,
         LISTAR_SUBCATEGORIAS_POR_CATEGORIA,
         LISTAR_MUEBLES_POR_SUBCATEGORIA,
         INSERTAR_PROYECTO,
-        LISTAR_LISTAMUEBLES_POR_NOMBRE,
-        BORRAR_LISTAMUEBLES_POR_NOMBRE} from './actionTypes';
+        LISTAR_LISTAMUEBLES_POR_NOMBRE} from './actionTypes';
 import {LISTAR_PROYECTOS,
         BORRAR_PROYECTO_POR_ID,
         LISTAR_PLANTILLA_POR_ID} from './actionTypes';
@@ -138,18 +137,6 @@ export function postProyecto(proyecto){
                     respuesta:jsonData
                 })
             })
-    };
-}
-export function deleteListaMueblesXnombre(nombre){
-    return function (dispatch, getState) {
-        fetch("http://localhost:8080/listaMuebles/borrar?nombre=" + nombre ,{method: 'DELETE'})//{method: 'GET',body: JSON.stringify(data),headers:{'Content-Type': 'application/json'}}
-        .then(response => response.json())
-        .then(jsonData => {
-            dispatch({
-                type:BORRAR_LISTAMUEBLES_POR_NOMBRE,
-                respuesta:jsonData
-            })
-        })
     };
 }
 //abrir

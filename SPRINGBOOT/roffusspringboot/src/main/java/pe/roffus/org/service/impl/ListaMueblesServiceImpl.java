@@ -46,8 +46,4 @@ public class ListaMueblesServiceImpl implements ListaMueblesService {
     public List<ListaMuebles> findListaMueblesByNombre(String nombre){
         return listaMueblesRepository.findListaMueblesByNombre(nombre);
     }
-    @Override
-    public void deleteListaMueblesByNombre(String nombre){
-        listaMueblesRepository.deleteListaMueblesByNombre(nombre);
-    }
 }

@@ -45,9 +45,8 @@ class DesignerRoom extends React.Component{
         event.target.parentNode.classList.add("room-selected");
     };
     btnAcceptPlantilla(){
-            //this.props.setGlobalPlantilla({"ancho":parseInt(this.state.dummyAncho),"largo":parseInt(this.state.dummyLargo),"alto":parseInt(this.state.dummyAlto),"diseno":this.state.localSelected.diseno});
-          this.props.cambiarPlantilla(parseInt(this.state.dummyAncho),parseInt(this.state.dummyLargo),parseInt(this.state.dummyAlto),this.state.localSelected.diseno);
-            //this.$emit('btnAcceptClicked',{ancho:this.plantillaAncho,largo:this.plantillaLargo,alto:this.plantillaAlto});
+            this.props.setGlobalPlantilla({"ancho":parseInt(this.state.dummyAncho),"largo":parseInt(this.state.dummyLargo),"alto":parseInt(this.state.dummyAlto),"diseno":this.state.localSelected.diseno});
+          //this.$emit('btnAcceptClicked',{ancho:this.plantillaAncho,largo:this.plantillaLargo,alto:this.plantillaAlto});
           let newJson = this.state.localSelected.diseno.replace(/([a-zA-Z0-9]+?):/g, '"$1":');        
           window.addRoom(JSON.parse(newJson),this.state.dummyAncho,this.state.dummyLargo);
         

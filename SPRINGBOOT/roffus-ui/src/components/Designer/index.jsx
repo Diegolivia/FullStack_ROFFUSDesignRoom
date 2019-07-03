@@ -10,15 +10,12 @@ import Styles from './css/styles.css';
 import StylesFont from "./css/font-awesome.css";
 
 
-import { INSERTAR_PLANTILLA,INSERTAR_LISTAMUEBLES,INSERTAR_PROYECTO,BORRAR_LISTAMUEBLES_POR_NOMBRE } from '../../actions/actionTypes';
-import {postPlantilla,postListaMuebles,postProyecto,fetchListaProyectos,deleteListaMueblesXnombre} from '../../actions/designerActions';
-window.DesignerProjectStates={empty:'empty',created:'created',saved:'saved'};
+import { INSERTAR_PLANTILLA,INSERTAR_LISTAMUEBLES,INSERTAR_PROYECTO } from '../../actions/actionTypes';
+import {postPlantilla,postListaMuebles,postProyecto,fetchListaProyectos} from '../../actions/designerActions';
 class Designer extends React.Component{
-    
     constructor(props){
         super(props);
         this.state={
-            proyectoState:window.DesignerProjectStates.empty,
             proyectoActual:{nombrePaquete:'',plantilla:null,usuario:null,listaMuebles:''},
             plantillaActual:{diseno:'[{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}]',alto:0,ancho:0,largo:0},
 
@@ -27,11 +24,11 @@ class Designer extends React.Component{
             nombreListaMuebles:'L'+Math.round(Math.random()*5000),
             usuario:{"codUsuario":1,"nombreUsuario":null,"correo":null,"contrasena":null,"foto":null,"fnacimiento":null},
         }
-        this.guardarProyecto=this.guardarProyecto.bind(this);
-        this.crearNuevoProyecto=this.crearNuevoProyecto.bind(this);
-        this.cambiarPlantilla=this.cambiarPlantilla.bind(this);
-        this.guardarPaquete=this.guardarPaquete.bind(this);
-        this.abrirProyecto=this.abrirProyecto.bind(this);
+        this.setPlantillaActual=this.setPlantillaActual.bind(this);
+        this.setProyectoActual=this.setProyectoActual.bind(this);
+        this.doGuardarProyecto=this.doGuardarProyecto.bind(this);
+        this.asyncGuardarPaquete=this.asyncGuardarPaquete.bind(this);
+
     };
     componentDidMount(){
         window.initUI();
@@ -40,24 +37,21 @@ class Designer extends React.Component{
     componentWillReceiveProps(nextProps){
         if(nextProps.actionType===INSERTAR_PLANTILLA){
 
-            console.log(nextProps.respuesta);
+            //console.log(nextProps.respuesta);
             this.setState({plantillaActual:nextProps.respuesta});
-            this.guardarPaquete(nextProps.respuesta);
+            this.asyncGuardarPaquete(nextProps.respuesta);
         }else if(nextProps.actionType===INSERTAR_LISTAMUEBLES){
-            console.log(nextProps.respuesta);
+            //console.log(nextProps.respuesta);
         }else if(nextProps.actionType===INSERTAR_PROYECTO){
             console.log(nextProps.respuesta);
             this.setState({proyectoActual:nextProps.respuesta});
             this.props.fetchListaProyectos();
-        }else if(nextProps.actionType===BORRAR_LISTAMUEBLES_POR_NOMBRE){
-            let listaGenerada=window.generateListaMuebles(this.state.nombreListaMuebles);
-            this.props.postListaMuebles(JSON.stringify(listaGenerada));
         }
     }
     componentWillUnmount(){
         window.desInit();
     };
-    guardarPaquete(plantilla){
+    asyncGuardarPaquete(plantilla){
         //esperó a que se responda la accion INSERTAR PLANTILLA
         this.setState((prevState)=>({
             proyectoActual:{
@@ -68,82 +62,58 @@ class Designer extends React.Component{
                 plantilla:plantilla
             }
         }),function(){
+            console.log(this.state.proyectoActual.plantilla.diseno);
             this.props.postProyecto(JSON.stringify(this.state.proyectoActual));
         });
 
     }
     //llamado desde los hijos
-    guardarProyecto(){
-        if(this.state.proyectoState==window.DesignerProjectStates.created){
-            this.setState({proyectoState:window.DesignerProjectStates.saved});
+    setProyectoActual(compProyecto){
+        this.setState({existeProyecto:true});
+        this.setState((prevState)=>({
+            proyectoActual:{
+                plantilla:null,usuario:null,listaMuebles:'',
+                ...compProyecto
+            }
+        }));
+    }
+    setPlantillaActual(compPlantilla){
+        if(compPlantilla.diseno==null){
+            this.setState((prevState)=>({
+                plantillaActual:{
+                    ...compPlantilla,
+                    diseno:'[{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}]'
+                }
+            }));
+            this.setState({nombreListaMuebles:'L'+Math.round(Math.random()*5000),});
+        }else{
+            this.setState((prevState)=>({
+                plantillaActual:{
+                    ...prevState.plantillaActual,
+                    ...compPlantilla
+                }
+            }));
+        }
+
+    }
+    doGuardarProyecto(){
+        if(/*this.state.estadoProyecto==0*/1){
+            this.setState({estadoProyecto:1});
             let listaGenerada=window.generateListaMuebles(this.state.nombreListaMuebles);
             /*POST*/this.props.postPlantilla(JSON.stringify(this.state.plantillaActual));
             /*POST*/this.props.postListaMuebles(JSON.stringify(listaGenerada));
 
-        }else if(this.state.proyectoState==window.DesignerProjectStates.saved){
-            this.props.postPlantilla(JSON.stringify(this.state.plantillaActual));
-            this.props.deleteListaMueblesXnombre(this.state.nombreListaMuebles);
-
         }
-    }
-    crearNuevoProyecto(plantillaAncho,plantillaLargo,plantillaAlto,proyectoNombre){
-        this.setState({proyectoActual:{nombrePaquete:'',plantilla:null,usuario:null,listaMuebles:''},
-        plantillaActual:{diseno:'[{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}]',alto:0,ancho:0,largo:0},
-        nombreListaMuebles:'L'+Math.round(Math.random()*5000)},
-            function(){
-                this.setState((prevState)=>({
-                    proyectoActual:{
-                        ...prevState.proyectoActual,
-                        nombrePaquete:proyectoNombre
-                    }
-                }));
-                this.setState((prevState)=>({
-                    plantillaActual:{
-                        ...prevState.plantillaActual,
-                        ancho:plantillaAncho,
-                        alto:plantillaAlto,
-                        largo:plantillaLargo
-                    }
-            }));
-        })
-
-        this.state.proyectoState=window.DesignerProjectStates.created;
-    }
-    cambiarPlantilla(plantillaAncho,plantillaLargo,plantillaAlto,diseño){
-        this.setState((prevState)=>({
-            plantillaActual:{
-                ...prevState.plantillaActual,
-                ancho:plantillaAncho,
-                largo:plantillaLargo,
-                alto:plantillaAlto,
-                diseno:diseño
-            }
-        }))
-    }
-    abrirProyecto(proyecto,plantilla){
-        this.state.proyectoState=window.DesignerProjectStates.saved;
-        console.log(proyecto);
-        console.log(plantilla);
-        if(proyecto!=null){
-            this.setState({proyectoActual:proyecto});
-        }
-        if(plantilla!=null){
-            this.setState({plantillaActual:plantilla});
-        }
-        this.setState({nombreListaMuebles:proyecto.listaMuebles});
-
-
-
     }
     render(){
         return(
             <React.Fragment>
                 <DesignerPlane2d/>
-                <DesignerHeader guardarProyecto={this.guardarProyecto}/>
+                <DesignerHeader doGuardarProyecto={this.doGuardarProyecto}/>
                 <DesignerCategories/>
                 <DesignerStateInfo/>
-                <DesignerRoom cambiarPlantilla={this.cambiarPlantilla} globalPlantilla={this.state.plantillaActual}/>
-                <DesignerProject crearNuevoProyecto={this.crearNuevoProyecto} abrirProyecto={this.abrirProyecto}/>
+                <DesignerRoom globalPlantilla={this.state.plantillaActual} setGlobalPlantilla={this.setPlantillaActual}/>
+                <DesignerProject setGlobalPlantilla={this.setPlantillaActual} setGlobalProyecto={this.setProyectoActual} existeProyecto={this.state.existeProyecto}/>
             </React.Fragment>
         );
     }
@@ -153,6 +123,6 @@ const mapState = state => {
   };
   
   const mapDispatch = {
-    postPlantilla,postListaMuebles,postProyecto,fetchListaProyectos,deleteListaMueblesXnombre
+    postPlantilla,postListaMuebles,postProyecto,fetchListaProyectos
   };
  export default connect(mapState,mapDispatch)(Designer);

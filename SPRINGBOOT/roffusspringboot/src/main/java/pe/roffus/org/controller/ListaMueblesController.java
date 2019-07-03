@@ -46,12 +46,5 @@ public class ListaMueblesController {
     @GetMapping("/pornombre")
     List<ListaMuebles> getListaMueblesXnombre(@RequestParam String nombre){        return listaMueblesService.findListaMueblesByNombre(nombre);  }
 
-    @CrossOrigin
-    @RequestMapping(path="/borrar",method = RequestMethod.DELETE)
-    Boolean deleteListaMueblesByNombre(@RequestParam String nombre){
-        listaMueblesService.deleteListaMueblesByNombre(nombre);
-        return true;
-    }
-
 
 }

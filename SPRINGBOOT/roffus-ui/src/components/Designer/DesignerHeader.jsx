@@ -10,7 +10,7 @@ class DesignerHeader extends React.Component{
     };
     btnGuardarProyecto(){
       //axios post proyecto nuevo
-      this.props.guardarProyecto();
+      this.props.doGuardarProyecto();
       //pasos
       //axios post listaMuebles
       //axios post proyecto
