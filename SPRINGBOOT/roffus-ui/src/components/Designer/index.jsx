@@ -12,7 +12,7 @@ import StylesFont from "./css/font-awesome.css";
 
 import { INSERTAR_PLANTILLA,INSERTAR_LISTAMUEBLES,INSERTAR_PROYECTO,BORRAR_LISTAMUEBLES_POR_NOMBRE } from '../../actions/actionTypes';
 import {postPlantilla,postListaMuebles,postProyecto,fetchListaProyectos,deleteListaMueblesXnombre} from '../../actions/designerActions';
-window.DesignerProjectStates={empty:'empty',created:'created',saved:'saved'};
+
 class Designer extends React.Component{
     
     constructor(props){
@@ -42,7 +42,12 @@ class Designer extends React.Component{
 
             console.log(nextProps.respuesta);
             this.setState({plantillaActual:nextProps.respuesta});
-            this.guardarPaquete(nextProps.respuesta);
+            if(this.state.proyectoState==window.DesignerProjectStates.created){
+                this.guardarPaquete(nextProps.respuesta);
+                window.showMessage("Guardado exitosamente");
+            }
+
+            this.setState({proyectoState:window.DesignerProjectStates.saved});
         }else if(nextProps.actionType===INSERTAR_LISTAMUEBLES){
             console.log(nextProps.respuesta);
         }else if(nextProps.actionType===INSERTAR_PROYECTO){
@@ -51,7 +56,9 @@ class Designer extends React.Component{
             this.props.fetchListaProyectos();
         }else if(nextProps.actionType===BORRAR_LISTAMUEBLES_POR_NOMBRE){
             let listaGenerada=window.generateListaMuebles(this.state.nombreListaMuebles);
+            console.log(listaGenerada);
             this.props.postListaMuebles(JSON.stringify(listaGenerada));
+            window.showMessage("Guardado exitosamente");
         }
     }
     componentWillUnmount(){
@@ -75,8 +82,9 @@ class Designer extends React.Component{
     //llamado desde los hijos
     guardarProyecto(){
         if(this.state.proyectoState==window.DesignerProjectStates.created){
-            this.setState({proyectoState:window.DesignerProjectStates.saved});
+
             let listaGenerada=window.generateListaMuebles(this.state.nombreListaMuebles);
+            console.log(listaGenerada);
             /*POST*/this.props.postPlantilla(JSON.stringify(this.state.plantillaActual));
             /*POST*/this.props.postListaMuebles(JSON.stringify(listaGenerada));
 
@@ -87,27 +95,13 @@ class Designer extends React.Component{
         }
     }
     crearNuevoProyecto(plantillaAncho,plantillaLargo,plantillaAlto,proyectoNombre){
-        this.setState({proyectoActual:{nombrePaquete:'',plantilla:null,usuario:null,listaMuebles:''},
-        plantillaActual:{diseno:'[{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}]',alto:0,ancho:0,largo:0},
-        nombreListaMuebles:'L'+Math.round(Math.random()*5000)},
-            function(){
-                this.setState((prevState)=>({
-                    proyectoActual:{
-                        ...prevState.proyectoActual,
-                        nombrePaquete:proyectoNombre
-                    }
-                }));
-                this.setState((prevState)=>({
-                    plantillaActual:{
-                        ...prevState.plantillaActual,
-                        ancho:plantillaAncho,
-                        alto:plantillaAlto,
-                        largo:plantillaLargo
-                    }
-            }));
-        })
 
-        this.state.proyectoState=window.DesignerProjectStates.created;
+        this.setState({
+            proyectoState:window.DesignerProjectStates.created,
+            proyectoActual:{nombrePaquete:proyectoNombre,plantilla:null,usuario:null,listaMuebles:''},
+            plantillaActual:{diseno:'[{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}]',alto:plantillaAlto,ancho:plantillaAncho,largo:plantillaLargo},
+            nombreListaMuebles:'L'+Math.round(Math.random()*5000)
+        });
     }
     cambiarPlantilla(plantillaAncho,plantillaLargo,plantillaAlto,diseño){
         this.setState((prevState)=>({
@@ -121,15 +115,12 @@ class Designer extends React.Component{
         }))
     }
     abrirProyecto(proyecto,plantilla){
-        this.state.proyectoState=window.DesignerProjectStates.saved;
-        console.log(proyecto);
-        console.log(plantilla);
-        if(proyecto!=null){
+
+        this.setState({proyectoState:window.DesignerProjectStates.saved});
             this.setState({proyectoActual:proyecto});
-        }
-        if(plantilla!=null){
+        
             this.setState({plantillaActual:plantilla});
-        }
+        
         this.setState({nombreListaMuebles:proyecto.listaMuebles});
 
 
@@ -143,7 +134,8 @@ class Designer extends React.Component{
                 <DesignerCategories/>
                 <DesignerStateInfo/>
                 <DesignerRoom cambiarPlantilla={this.cambiarPlantilla} globalPlantilla={this.state.plantillaActual}/>
-                <DesignerProject crearNuevoProyecto={this.crearNuevoProyecto} abrirProyecto={this.abrirProyecto}/>
+                <DesignerProject crearNuevoProyecto={this.crearNuevoProyecto} abrirProyecto={this.abrirProyecto} globalProyectoActual={this.state.proyectoActual}/>
+                <div className="dialoguebox"></div>
             </React.Fragment>
         );
     }
