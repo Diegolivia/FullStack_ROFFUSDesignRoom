@@ -1,4 +1,4 @@
-import {INSERTAR_PLANTILLA,INSERTAR_LISTAMUEBLES,INSERTAR_PROYECTO} from '../actions/actionTypes';
+import {INSERTAR_PLANTILLA,INSERTAR_LISTAMUEBLES,INSERTAR_PROYECTO,BORRAR_LISTAMUEBLES_POR_NOMBRE} from '../actions/actionTypes';
 export function root(state = {}, action) {
     switch (action.type) {
         case INSERTAR_PLANTILLA:
@@ -19,6 +19,12 @@ export function root(state = {}, action) {
                 respuesta: action.respuesta,
                 error: false
             });    
+        case BORRAR_LISTAMUEBLES_POR_NOMBRE:
+            return Object.assign({}, state, {
+                actionType: action.type,
+                respuesta: action.respuesta,
+                error: false
+            }); 
         default:
             return state;
     }
