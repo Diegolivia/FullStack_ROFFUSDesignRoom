@@ -44,15 +44,14 @@ class DesignerProject extends React.Component{
               this.props.abrirProyecto(this.state.proyectoActual,nextProps.respuesta);
             var newJson = nextProps.respuesta.diseno.replace(/([a-zA-Z0-9]+?):/g, '"$1":');
             newJson = newJson.replace(/'/g, '"');
+            console.log(JSON.parse(newJson));
             window.addRoom(JSON.parse(newJson),nextProps.respuesta.ancho,nextProps.respuesta.largo);
              window.panelProject.closer_fired();
               //this.props.setGlobalPlantilla({diseno:JSON.parse(newJson)+"",ancho:nextProps.respuesta.ancho,largo:nextProps.respuesta.largo,alto:nextProps.respuesta.alto});
           }else if(nextProps.actionType===LISTAR_LISTAMUEBLES_POR_NOMBRE){
+              console.log(nextProps.respuesta);
               window.cleanListaMuebles();
               window.loadFurnitures(nextProps.respuesta);
-              window.showMessage("Proyecto \""+this.state.proyectoActual.nombrePaquete+"\" abierto");
-          }else{
-
           }
     }
      btnAbrirProyecto(index){
@@ -64,10 +63,6 @@ class DesignerProject extends React.Component{
         //this.listarMueblesXlistaMuebles();
     };
     btnBorrarProyecto(index){
-        if(this.state.proyectos[index].codPaquete==this.props.globalProyectoActual.codPaquete){
-            window.showMessage("No permitido : el proyecto esta abierto");
-            return;
-        }
       /*DELETE*/ this.props.deleteProyectoXid(this.state.proyectos[index].codPaquete);
       /*GET*/ 
     };
@@ -76,7 +71,6 @@ class DesignerProject extends React.Component{
     }
     btnCrearProyecto(){
         if(!this.validateForm()){return;}
-
         this.limpiarProyectoForm();
         //TRIGGER SET GLOBAL DATES
         this.props.crearNuevoProyecto(this.state.plantillaAncho,this.state.plantillaLargo,this.state.plantillaAlto,this.state.proyectoNombre);
@@ -84,7 +78,6 @@ class DesignerProject extends React.Component{
         window.cleanListaMuebles();
         window.addRoom([{x:-0.5,y:-0.5},{x:0.5,y:-0.5},{x:0.5,y:0.5},{x:-0.5,y:0.5}],parseInt(this.state.plantillaAncho),parseInt(this.state.plantillaLargo));
         window.panelProject.closer_fired();
-        window.showMessage("Proyecto \"" + this.state.proyectoNombre + "\" creado");
     };
     //=============================
     //helpers
@@ -165,14 +158,14 @@ class DesignerProject extends React.Component{
         );
     }
 }
-const mapStated = state => {
+const mapState = state => {
     return {respuesta: state.project.respuesta || [],actionType: state.project.actionType}
   };
   
-const mapDispatchd = {
+const mapDispatch = {
     fetchListaProyectos,
     deleteProyectoXid,
     fetchPlantillaXid,
     fetchListaMueblesXnombre
 };
- export default connect(mapStated,mapDispatchd)(DesignerProject);
+ export default connect(mapState,mapDispatch)(DesignerProject);

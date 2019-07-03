@@ -324,7 +324,6 @@
         this.isloaded=isloaded;
             this.left=0;
             this.top=0;
-            this.angle=0;
         let self=this;
         this.init=function(){
             
@@ -345,7 +344,6 @@
                 }else{
                     img.set("left",self.left);
                     img.set("top",self.top);
-                    img.set("angle",self.angle);
                 }
                 img["transparentCorners"]=false;
                 img["cornerColor"]="rgba(30,30,30)";
@@ -373,9 +371,6 @@
             this.left=left;
             this.top=top;
         }
-        this.setRotationManually=function(rot){
-            this.angle=rot;
-        }
         this.isSelected=function(){
             self.setPanelStateInfo();
         }
@@ -394,8 +389,7 @@
     var canvas;
     var room=null;
     var arrMuebles=[];
-    var dialogeBox=null;
     function init(){
         canvas=new Canvas();
-        dialogeBox=document.querySelector(".dialoguebox");
+
     }
