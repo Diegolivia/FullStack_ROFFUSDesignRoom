@@ -1,3 +1,4 @@
+window.DesignerProjectStates={empty:'empty',created:'created',saved:'saved'};
 function initUI(){
   panelProject.init();
   panelRoom.init();
@@ -36,6 +37,7 @@ function loadFurnitures(listaMuebles){
     for(var i=0;i<listaMuebles.length;i++){
       let tmp=new Furniture(listaMuebles[i].mueble,false,true);
       tmp.setPositionManually(listaMuebles[i].coordX,listaMuebles[i].coordY);
+      tmp.setRotationManually(listaMuebles[i].rotacion);
       arrMuebles.push(tmp);
     }
 }
@@ -47,7 +49,7 @@ function generateListaMuebles(nombreLista){
         nombreLista:nombreLista,
         coordX:tmp.fabric.get("left"),
         coordY:tmp.fabric.get("top"),
-        rootacion:tmp.fabric.get("angle"),
+        rotacion:tmp.fabric.get("angle"),
         mueble:tmp.objDB
       });
     }
@@ -60,3 +62,8 @@ function cleanListaMuebles(){
     arrMuebles=[];
 }
 
+function showMessage(message){
+  dialogeBox.innerHTML=message;
+  dialogeBox.classList.add("show");
+  setTimeout(function(){dialogeBox.classList.remove("show")},1900);
+}

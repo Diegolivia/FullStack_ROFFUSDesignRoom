@@ -467,3 +467,18 @@ body {
     padding: 2px;
     width: 70px;
     font-size: 1em; }
+
+
+    .dialoguebox{
+      background:black;
+      padding:20px;
+      color:white;
+      position:absolute;
+      bottom:20px;
+      right:20px;
+      transition:0.4s;
+      opacity:0;
+    }
+    .show{
+      opacity:1 !important;
+    }
